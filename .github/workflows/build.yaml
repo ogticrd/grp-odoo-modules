@@ -44,7 +44,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          tags: ${{ secrets.DOCKER_USERNAME }}:${{ matrix.version }}
+          tags: gobdo:${{ matrix.version }}
           build-args: |
             ODOO_VERSION=${{ matrix.version }}
           push: true
