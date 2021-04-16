@@ -1,0 +1,51 @@
+name: Test & Build
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches:
+      - "master"
+    paths:
+      - "**/workflows/**"
+      - "Dockerfile"
+
+env:
+  GCR_BASE: gcr.io/iterativo
+  IMAGE_PATH: github-actions
+
+jobs:
+  build:
+    name: Build and push
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['14.0']
+
+    steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Checkout local
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          tags: ${{ secrets.DOCKER_USERNAME }}:${{ matrix.version }}
+          build-args: |
+            ODOO_VERSION=${{ matrix.version }}
+          push: true
+          cache-from: type=registry,ref=gcr.io/${{ secrets.GKE_PROJECT }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ matrix.version }}
+          cache-to: type=inline
