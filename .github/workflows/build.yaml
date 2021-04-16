@@ -48,5 +48,5 @@ jobs:
           build-args: |
             ODOO_VERSION=${{ matrix.version }}
           push: true
-          cache-from: type=registry,ref=gcr.io/${{ secrets.GKE_PROJECT }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ matrix.version }}
+          cache-from: type=registry,ref=gobdo:${{ matrix.version }}
           cache-to: type=inline
