@@ -5,10 +5,11 @@ on:
     - cron: "0 0 * * *"
   push:
     branches:
+      - "main"
       - "master"
     paths:
-      - "**/workflows/**"
-      - "Dockerfile"
+    - "**/workflows/**"
+    - "Dockerfile"
 
 env:
   GCR_BASE: gcr.io/iterativo
