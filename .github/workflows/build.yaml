@@ -12,8 +12,7 @@ on:
     - "Dockerfile"
 
 env:
-  GCR_BASE: gcr.io/iterativo
-  IMAGE_PATH: github-actions
+  HUB_BASE: gobdo
 
 jobs:
   build:
@@ -44,9 +43,9 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          tags: gobdo:${{ matrix.version }}
+          tags: ${{ env.HUB_BASE }}/odoo:${{ matrix.version }}
           build-args: |
             ODOO_VERSION=${{ matrix.version }}
           push: true
-          cache-from: type=registry,ref=gobdo:${{ matrix.version }}
+          cache-from: type=registry,ref=${{ env.HUB_BASE }}/odoo:${{ matrix.version }}
           cache-to: type=inline
