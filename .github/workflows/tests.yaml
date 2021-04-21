@@ -1,0 +1,184 @@
+name: Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - "[0-9]+.0"
+    paths:
+      - '**/workflows/**'
+      - '**/src/**'
+      - '**/i18n/**'
+      - '**.py'
+      - '**.xml'
+    types: [ opened, synchronize, reopened, labeled ]
+
+env:
+  REQUIRED_MODULES: "session_redis,logging_json,attachment_s3" # list of addional addons to install separated by comma
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    outputs:
+      get_modules: ${{ steps.get_modules.outputs.modules }}
+      image_digest: ${{ steps.docker_build.outputs.digest }}
+
+    steps:
+      - uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Checkout local
+        uses: actions/checkout@v2
+        with:
+          path: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
+
+      - name: Odoo Enterprise
+        uses: actions/checkout@v2
+        with:
+          repository: odoo/enterprise
+          token: ${{ secrets.ACTIONS_PAT }}
+          path: enterprise
+          ref: ${{ env.GITHUB_BASE_REF_SLUG }}
+
+      - name: Select Odoo modules to install
+        id: get_modules
+        run: |
+          curl https://raw.githubusercontent.com/iterativo-git/dockerdoo/${{ env.GITHUB_BASE_REF_SLUG }}/resources/getaddons.py -o getaddons.py
+          output=$(python -c "from getaddons import get_modules; print(','.join(get_modules('./${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}', depth=3)))")
+          echo "::set-output name=modules::$output"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          driver-opts: network=host
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: |
+            /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ env.GITHUB_HEAD_REF_SLUG }}-${{ env.GITHUB_SHA_SHORT }}
+
+      - name: Login to GCR
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: _json_key
+          password: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Build & push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}/Dockerfile
+          tags: ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          build-args: |
+            EXTRA_MODULES=${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
+            ODOO_VERSION=${{ env.GITHUB_BASE_REF_SLUG }}
+            DB_PORT_5432_TCP_ADDR=${{ secrets.DB_PORT_5432_TCP_ADDR }}
+            DB_ENV_POSTGRES_USER=${{ secrets.DB_ENV_POSTGRES_USER }}
+            DB_PORT_5432_TCP_PORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
+            DB_ENV_POSTGRES_PASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
+            ODOO_SESSION_REDIS=${{ secrets.ODOO_SESSION_REDIS }}
+            ODOO_SESSION_REDIS_HOST=${{ secrets.ODOO_SESSION_REDIS_HOST }}
+            ODOO_LOGGING_JSON=${{ secrets.ODOO_LOGGING_JSON }}
+            AWS_HOST=${{ secrets.AWS_HOST }}
+            AWS_REGION=${{ secrets.AWS_REGION }}
+            AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_BUCKETNAME=${{ secrets.AWS_BUCKETNAME }}
+            DBNAME={{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG }}.{{ secrets.ROOT_DOMAIN }}
+            SERVER_WIDE_MODULES=base,web,session_redis,logging_json,attachment_s3
+            DBFILTER=False
+          push: true
+          cache-from: type=registry,ref=ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+
+        # Temp fix
+        # https://github.com/docker/build-push-action/issues/252
+        # https://github.com/moby/buildkit/issues/1896
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+      - uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.1.0"
+
+      - name: K8s Template
+        uses: actions/checkout@v2
+        with:
+          repository: indexa-git/gke-dev-cluster.git
+          path: gke-dev-cluster
+          token: ${{ secrets.ACTIONS_PAT }}
+          ref: master
+
+      - name: Kustomize - Set image & Build
+        run: |
+          cd gke-dev-cluster/deployments/odoo/${{ env.GITHUB_BASE_REF_SLUG }}/dev
+          kustomize edit set image ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
+          kustomize build . -o deployment.yaml.tmpl
+      - name: Render Deployment YAML
+        uses: nowactions/envsubst@v1
+        with:
+          input: gke-dev-cluster/deployments/odoo/${{ env.GITHUB_BASE_REF_SLUG }}/dev/deployment.yaml.tmpl
+          output: ./deployment.yaml
+        env:
+          ENV: dev
+          GKE_LOCATION: ${{ secrets.GKE_ZONE }}
+          # Modules to Install
+          EXTRA_MODULES: ${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
+          # Image to Deploy
+          PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+          REPO_NAME: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
+          BRANCH_NAME: ${{ env.GITHUB_HEAD_REF_SLUG }}
+          # URL to acccess
+          REPO_URL: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}
+          BRANCH_URL: ${{ env.GITHUB_HEAD_REF_SLUG }}
+          SHORT_SHA: ${{ env.GITHUB_SHA_SHORT }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: deployment-${{ env.GITHUB_HEAD_REF_SLUG }}
+          path: deployment.yaml
+
+  test:
+    name: Test Modules
+    needs: ["build"]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    services:
+      db:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+        # needed because the postgres container does not provide a healthcheck
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Login to GCR
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: _json_key
+          password: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Run Odoo tests
+        run: |
+          docker pull ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          docker run -e RUN_TESTS -e LOG_LEVEL -e EXTRA_MODULES -e PGHOST --network="host" --name odoo -t ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+        env:
+          RUN_TESTS: "1"
+          LOG_LEVEL: test
+          EXTRA_MODULES: ${{ needs.build.outputs.get_modules }}
+          PGHOST: localhost

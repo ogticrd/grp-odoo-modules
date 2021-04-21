@@ -1,0 +1,113 @@
+name: Deploy
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  pr_commented:
+    name: PR comment
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.event.comment.body, '/deploy') || startsWith(github.event.comment.body, '/staging') }}
+    outputs:
+      deploy: ${{ steps.check.outputs.triggered }}
+      base_ref: ${{ steps.comment-branch.outputs.base_ref }}
+      head_ref: ${{ steps.comment-branch.outputs.head_ref }}
+      head_ref_slug: ${{ steps.slugs.outputs.head_ref_slug }}
+    steps:
+      - uses: Amwam/issue-comment-action@v1.3.1
+        with:
+          keywords: '["/staging"]'
+          labels: '["staging"]'
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: "rocket"
+
+      # needed to be able to check out correct branch
+      - uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: slugs
+        shell: bash
+        run: |
+          BRANCH=${{ steps.comment-branch.outputs.head_ref }}
+          BRANCH_URL=${BRANCH//[[:punct:]]/-}
+          echo ::set-output name=head_ref_slug::$BRANCH_URL
+      # Extract database name from staging comment
+      - name: comment-slugs
+        id: comment_slugs
+        if: startsWith(github.event.comment.body, '/staging')
+        shell: bash
+        run: |
+          COMMENT="${{ github.event.comment.body }}"
+          DB_NAME=$(echo "$COMMENT" | sed "s/\/staging //g")
+          echo "$DB_NAME" > db_name.txt
+      - name: Upload artifact with db name
+        uses: actions/upload-artifact@v2
+        if: startsWith(github.event.comment.body, '/staging')
+        with:
+          name: db_name
+          path: db_name.txt
+          retention-days: 1
+
+      - name: Wait for build to succeed
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build
+        if: startsWith(github.event.comment.body, '/staging')
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+  deploy:
+    name: GKE Deploy
+    needs: ["pr_commented"]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Download deployment artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: tests.yaml
+          name: deployment-${{ needs.pr_commented.outputs.head_ref }}
+
+      - uses: google-github-actions/get-gke-credentials@v0.2.1
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER }}
+          location: ${{ secrets.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+
+      - name: Deploy
+        uses: docker://gcr.io/cloud-builders/gke-deploy
+        with:
+          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ needs.pr_commented.outputs.base_ref }}
+
+      - name: Failure reaction
+        if: ${{ failure() }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: "-1"
+
+      - name: Success reaction
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: heart
+
+      - uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            **QA URL:** 
+            https://${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}-${{ needs.pr_commented.outputs.head_ref_slug }}.indexa.do
+          reactions: eyes
