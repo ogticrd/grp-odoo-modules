@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="gob_category_221101" model="product.category">
+            <field name="name">2.2.1.1.01 Radiocomunicación</field>
+        </record>
+        <record id="gob_category_221201" model="product.category">
+            <field name="name">2.2.1.2.01 Servicios telefónico de larga distancia</field>
+        </record>
+        <record id="gob_category_221301" model="product.category">
+            <field name="name">2.2.1.3.01 Teléfono local</field>
+        </record>
+        <record id="gob_category_221401" model="product.category">
+            <field name="name">2.2.1.4.01 Telefax y correos</field>
+        </record>
+        <record id="gob_category_221501" model="product.category">
+            <field name="name">2.2.1.5.01 Servicio de internet y televisión por cable</field>
+        </record>
+        <record id="gob_category_221601" model="product.category">
+            <field name="name">2.2.1.6.01 Energía eléctrica</field>
+        </record>
+        <record id="gob_category_221701" model="product.category">
+            <field name="name">2.2.1.7.01 Agua</field>
+        </record>
+        <record id="gob_category_221801" model="product.category">
+            <field name="name">2.2.1.8.01 Recolección de residuos sólidos</field>
+        </record>
+        <record id="gob_category_222101" model="product.category">
+            <field name="name">2.2.2.1.01 Publicidad y propaganda</field>
+        </record>
+        <record id="gob_category_222201" model="product.category">
+            <field name="name">2.2.2.2.01 Impresión y encuadernación</field>
+        </record>
+        <record id="gob_category_223101" model="product.category">
+            <field name="name">2.2.3.1.01 Viáticos dentro del país</field>
+        </record>
+        <record id="gob_category_223201" model="product.category">
+            <field name="name">2.2.3.2.01 Viáticos fuera del país</field>
+        </record>
+        <record id="gob_category_224101" model="product.category">
+            <field name="name">2.2.4.1.01 Pasajes y gastos de transporte</field>
+        </record>
+        <record id="gob_category_224201" model="product.category">
+            <field name="name">2.2.4.2.01 Fletes</field>
+        </record>
+        <record id="gob_category_224301" model="product.category">
+            <field name="name">2.2.4.3.01 Almacenaje</field>
+        </record>
+        <record id="gob_category_224302" model="product.category">
+            <field name="name">2.2.4.3.02 Servicios de manejo y embalaje</field>
+        </record>
+        <record id="gob_category_224401" model="product.category">
+            <field name="name">2.2.4.4.01 Peaje</field>
+        </record>
+        <record id="gob_category_225101" model="product.category">
+            <field name="name">2.2.5.1.01 Alquileres y rentas de edificaciones y locales</field>
+        </record>
+        <record id="gob_category_225304" model="product.category">
+            <field name="name">2.2.5.3.04 Alquiler de equipo de oficina y muebles</field>
+        </record>
+        <record id="gob_category_225401" model="product.category">
+            <field name="name">2.2.5.4.01 Alquileres de equipos de transporte, tracción y elevación</field>
+        </record>
+        <record id="gob_category_225501" model="product.category">
+            <field name="name">2.2.5.5.01 Alquiler de tierras</field>
+        </record>
+        <record id="gob_category_225601" model="product.category">
+            <field name="name">2.2.5.6.01 Alquileres de terrenos</field>
+        </record>
+        <record id="gob_category_225801" model="product.category">
+            <field name="name">2.2.5.8.01 Otros alquileres</field>
+        </record>
+        <record id="gob_category_226101" model="product.category">
+            <field name="name">2.2.6.1.01 Seguro de bienes inmuebles e infraestructura</field>
+        </record>
+        <record id="gob_category_226201" model="product.category">
+            <field name="name">2.2.6.2.01 Seguro de bienes muebles</field>
+        </record>
+        <record id="gob_category_226301" model="product.category">
+            <field name="name">2.2.6.3.01 Seguros de personas</field>
+        </record>
+        <record id="gob_category_226901" model="product.category">
+            <field name="name">2.2.6.9.01 Otros seguros</field>
+        </record>
+        <record id="gob_category_227101" model="product.category">
+            <field name="name">2.2.7.1.01 Obras menores en edificaciones</field>
+        </record>
+        <record id="gob_category_227102" model="product.category">
+            <field name="name">2.2.7.1.02 Servicios especiales de mantenimiento y reparación</field>
+        </record>
+        <record id="gob_category_227103" model="product.category">
+            <field name="name">2.2.7.1.03 Limpieza, desmalezamiento de tierras y terrenos</field>
+        </record>
+        <record id="gob_category_227104" model="product.category">
+            <field name="name">2.2.7.1.04 Mantenimiento y reparación de obras civiles en  instalaciones varias</field>
+        </record>
+        <record id="gob_category_227106" model="product.category">
+            <field name="name">2.2.7.1.06 Instalaciones eléctricas</field>
+        </record>
+        <record id="gob_category_227107" model="product.category">
+            <field name="name">2.2.7.1.07 Servicios de pintura, derivados con fines de higiene y embellecimiento</field>
+        </record>
+        <record id="gob_category_227201" model="product.category">
+            <field name="name">2.2.7.2.01 Mantenimiento y reparación de muebles y equipos de  oficina</field>
+        </record>
+        <record id="gob_category_227202" model="product.category">
+            <field name="name">2.2.7.2.02 Mantenimiento y reparación de equipo para computación</field>
+        </record>
+        <record id="gob_category_227206" model="product.category">
+            <field name="name">2.2.7.2.06 Mantenimiento y reparación de equipos de transporte,  tracción y elevación</field>
+        </record>
+        <record id="gob_category_227208" model="product.category">
+            <field name="name">2.2.7.2.08 Servicios de mantenimiento, reparación, desmonte e  instalación</field>
+        </record>
+        <record id="gob_category_228301" model="product.category">
+            <field name="name">2.2.8.3.01 Servicios sanitarios médicos y veterinarios</field>
+        </record>
+        <record id="gob_category_228401" model="product.category">
+            <field name="name">2.2.8.4.01 Servicios funerarios y gastos conexos</field>
+        </record>
+        <record id="gob_category_228501" model="product.category">
+            <field name="name">2.2.8.5.01 Fumigación</field>
+        </record>
+        <record id="gob_category_228503" model="product.category">
+            <field name="name">2.2.8.5.03 Limpieza e higiene</field>
+        </record>
+        <record id="gob_category_228601" model="product.category">
+            <field name="name">2.2.8.6.01 Eventos generales</field>
+        </record>
+        <record id="gob_category_228602" model="product.category">
+            <field name="name">2.2.8.6.02 Festividades</field>
+        </record>
+        <record id="gob_category_228603" model="product.category">
+            <field name="name">2.2.8.6.03 Actuaciones deportivas</field>
+        </record>
+        <record id="gob_category_228604" model="product.category">
+            <field name="name">2.2.8.6.04 Actuaciones artísticas</field>
+        </record>
+        <record id="gob_category_228701" model="product.category">
+            <field name="name">2.2.8.7.01 Servicios de Ingeniería, arquitectura, investigaciones y  análisis de factibilidad</field>
+        </record>
+        <record id="gob_category_228702" model="product.category">
+            <field name="name">2.2.8.7.02 Servicios jurídicos</field>
+        </record>
+        <record id="gob_category_228703" model="product.category">
+            <field name="name">2.2.8.7.03 Servicios de contabilidad y auditoría</field>
+        </record>
+        <record id="gob_category_228704" model="product.category">
+            <field name="name">2.2.8.7.04 Servicios de capacitación</field>
+        </record>
+        <record id="gob_category_228705" model="product.category">
+            <field name="name">2.2.8.7.05 Servicios de informática y sistemas computarizados</field>
+        </record>
+        <record id="gob_category_228706" model="product.category">
+            <field name="name">2.2.8.7.06 Otros servicios técnicos profesionales</field>
+        </record>
+        <record id="gob_category_228801" model="product.category">
+            <field name="name">2.2.8.8.01 Impuestos</field>
+        </record>
+        <record id="gob_category_228903" model="product.category">
+            <field name="name">2.2.8.9.03 Premios de billetes y quinielas de la Lotería Nacional</field>
+        </record>
+        <record id="gob_category_229101" model="product.category">
+            <field name="name">2.2.9.1.01 Otras contrataciones de servicios</field>
+        </record>
+        <record id="gob_category_229201" model="product.category">
+            <field name="name">2.2.9.2.01 Servicios de alimentación</field>
+        </record>
+        <record id="gob_category_229202" model="product.category">
+            <field name="name">2.2.9.2.02 Servicios de alimentación escolar</field>
+        </record>
+        <record id="gob_category_231101" model="product.category">
+            <field name="name">2.3.1.1.01 Alimentos y bebidas para personas</field>
+        </record>
+        <record id="gob_category_231201" model="product.category">
+            <field name="name">2.3.1.2.01 Alimentos para animales</field>
+        </record>
+        <record id="gob_category_231301" model="product.category">
+            <field name="name">2.3.1.3.01 Productos pecuarios</field>
+        </record>
+        <record id="gob_category_231302" model="product.category">
+            <field name="name">2.3.1.3.02 Productos agrícolas</field>
+        </record>
+        <record id="gob_category_231303" model="product.category">
+            <field name="name">2.3.1.3.03 Productos forestales</field>
+        </record>
+        <record id="gob_category_231401" model="product.category">
+            <field name="name">2.3.1.4.01 Madera, corcho y sus manufacturas</field>
+        </record>
+        <record id="gob_category_232101" model="product.category">
+            <field name="name">2.3.2.1.01 Hilados, fibras y telas</field>
+        </record>
+        <record id="gob_category_232201" model="product.category">
+            <field name="name">2.3.2.2.01 Acabados textiles</field>
+        </record>
+        <record id="gob_category_232301" model="product.category">
+            <field name="name">2.3.2.3.01 Prendas y accesorios de vestir</field>
+        </record>
+        <record id="gob_category_232401" model="product.category">
+            <field name="name">2.3.2.4.01 Calzados</field>
+        </record>
+        <record id="gob_category_233101" model="product.category">
+            <field name="name">2.3.3.1.01 Papel de escritorio</field>
+        </record>
+        <record id="gob_category_233201" model="product.category">
+            <field name="name">2.3.3.2.01 Productos de papel y cartón</field>
+        </record>
+        <record id="gob_category_233301" model="product.category">
+            <field name="name">2.3.3.3.01 Productos de artes gráficas</field>
+        </record>
+        <record id="gob_category_233401" model="product.category">
+            <field name="name">2.3.3.4.01 Libros, revistas y periódicos</field>
+        </record>
+        <record id="gob_category_233501" model="product.category">
+            <field name="name">2.3.3.5.01 Textos de enseñanza</field>
+        </record>
+        <record id="gob_category_233601" model="product.category">
+            <field name="name">2.3.3.6.01 Especies timbrados y valoradas</field>
+        </record>
+        <record id="gob_category_234101" model="product.category">
+            <field name="name">2.3.4.1.01 Productos medicinales para uso humano</field>
+        </record>
+        <record id="gob_category_234201" model="product.category">
+            <field name="name">2.3.4.2.01 Productos medicinales para uso veterinario</field>
+        </record>
+        <record id="gob_category_235101" model="product.category">
+            <field name="name">2.3.5.1.01 Cueros y pieles</field>
+        </record>
+        <record id="gob_category_235201" model="product.category">
+            <field name="name">2.3.5.2.01 Artículos de cuero</field>
+        </record>
+        <record id="gob_category_235301" model="product.category">
+            <field name="name">2.3.5.3.01 Llantas y neumáticos</field>
+        </record>
+        <record id="gob_category_235401" model="product.category">
+            <field name="name">2.3.5.4.01 Artículos de caucho</field>
+        </record>
+        <record id="gob_category_235501" model="product.category">
+            <field name="name">2.3.5.5.01 Artículos de plástico</field>
+        </record>
+        <record id="gob_category_236101" model="product.category">
+            <field name="name">2.3.6.1.01 Productos de cemento</field>
+        </record>
+        <record id="gob_category_236102" model="product.category">
+            <field name="name">2.3.6.1.02 Productos de cal</field>
+        </record>
+        <record id="gob_category_236103" model="product.category">
+            <field name="name">2.3.6.1.03 Productos de asbestos</field>
+        </record>
+        <record id="gob_category_236104" model="product.category">
+            <field name="name">2.3.6.1.04 Productos de yeso</field>
+        </record>
+        <record id="gob_category_236105" model="product.category">
+            <field name="name">2.3.6.1.05 Productos de arcilla y derivados</field>
+        </record>
+        <record id="gob_category_236201" model="product.category">
+            <field name="name">2.3.6.2.01 Productos de vidrio y metal</field>
+        </record>
+        <record id="gob_category_236202" model="product.category">
+            <field name="name">2.3.6.2.02 Productos de loza</field>
+        </record>
+        <record id="gob_category_236301" model="product.category">
+            <field name="name">2.3.6.3.01 Productos ferrosos</field>
+        </record>
+        <record id="gob_category_236302" model="product.category">
+            <field name="name">2.3.6.3.02 Productos no ferrosos</field>
+        </record>
+        <record id="gob_category_236303" model="product.category">
+            <field name="name">2.3.6.3.03 Estructuras metálicas acabadas</field>
+        </record>
+        <record id="gob_category_236304" model="product.category">
+            <field name="name">2.3.6.3.04 Herramientas menores</field>
+        </record>
+        <record id="gob_category_236305" model="product.category">
+            <field name="name">2.3.6.3.05 Productos de hojalata</field>
+        </record>
+        <record id="gob_category_236306" model="product.category">
+            <field name="name">2.3.6.3.06 Accesorios de metal</field>
+        </record>
+        <record id="gob_category_236307" model="product.category">
+            <field name="name">2.3.6.3.07 Otros productos metálicos</field>
+        </record>
+        <record id="gob_category_236401" model="product.category">
+            <field name="name">2.3.6.4.01 Minerales metalíferos</field>
+        </record>
+        <record id="gob_category_236402" model="product.category">
+            <field name="name">2.3.6.4.02 Petróleo crudo</field>
+        </record>
+        <record id="gob_category_236403" model="product.category">
+            <field name="name">2.3.6.4.03 Carbón mineral</field>
+        </record>
+        <record id="gob_category_236404" model="product.category">
+            <field name="name">2.3.6.4.04 Piedra, arcilla y arena</field>
+        </record>
+        <record id="gob_category_236406" model="product.category">
+            <field name="name">2.3.6.4.06 Productos abrasivos</field>
+        </record>
+        <record id="gob_category_236407" model="product.category">
+            <field name="name">2.3.6.4.07 Otros minerales</field>
+        </record>
+        <record id="gob_category_236901" model="product.category">
+            <field name="name">2.3.6.9.01 Otros productos no metálicos</field>
+        </record>
+        <record id="gob_category_237101" model="product.category">
+            <field name="name">2.3.7.1.01 Gasolina</field>
+        </record>
+        <record id="gob_category_237102" model="product.category">
+            <field name="name">2.3.7.1.02 Gasoil</field>
+        </record>
+        <record id="gob_category_237103" model="product.category">
+            <field name="name">2.3.7.1.03 Keroseno</field>
+        </record>
+        <record id="gob_category_237104" model="product.category">
+            <field name="name">2.3.7.1.04 Gas GLP</field>
+        </record>
+        <record id="gob_category_237105" model="product.category">
+            <field name="name">2.3.7.1.05 Aceites y grasas</field>
+        </record>
+        <record id="gob_category_237106" model="product.category">
+            <field name="name">2.3.7.1.06 Lubricantes</field>
+        </record>
+        <record id="gob_category_237107" model="product.category">
+            <field name="name">2.3.7.1.07 Gas natural</field>
+        </record>
+        <record id="gob_category_237199" model="product.category">
+            <field name="name">2.3.7.1.99 Otros combustibles</field>
+        </record>
+        <record id="gob_category_237201" model="product.category">
+            <field name="name">2.3.7.2.01 Productos explosivos y pirotecnia</field>
+        </record>
+        <record id="gob_category_237203" model="product.category">
+            <field name="name">2.3.7.2.03 Productos químicos de uso personal</field>
+        </record>
+        <record id="gob_category_237204" model="product.category">
+            <field name="name">2.3.7.2.04 Abonos y fertilizantes</field>
+        </record>
+        <record id="gob_category_237205" model="product.category">
+            <field name="name">2.3.7.2.05 Insecticidas, fumigantes y otros</field>
+        </record>
+        <record id="gob_category_237206" model="product.category">
+            <field name="name">2.3.7.2.06 Pinturas, lacas, barnices, diluyentes y absorbentes para  pinturas</field>
+        </record>
+        <record id="gob_category_237207" model="product.category">
+            <field name="name">2.3.7.2.07 Productos químicos para saneamiento de las aguas</field>
+        </record>
+        <record id="gob_category_237299" model="product.category">
+            <field name="name">2.3.7.2.99 Otros productos químicos y conexos</field>
+        </record>
+        <record id="gob_category_239101" model="product.category">
+            <field name="name">2.3.9.1.01 Material para limpieza</field>
+        </record>
+        <record id="gob_category_239201" model="product.category">
+            <field name="name">2.3.9.2.01 Útiles de escritorio, oficina e informática</field>
+        </record>
+        <record id="gob_category_239202" model="product.category">
+            <field name="name">2.3.9.2.02 Útiles escolares y de enseñanzas</field>
+        </record>
+        <record id="gob_category_239301" model="product.category">
+            <field name="name">2.3.9.3.01 Útiles menores médico quirúrgicos</field>
+        </record>
+        <record id="gob_category_239401" model="product.category">
+            <field name="name">2.3.9.4.01 Útiles destinados a actividades deportivas, culturales y recreativas</field>
+        </record>
+        <record id="gob_category_239501" model="product.category">
+            <field name="name">2.3.9.5.01 Útiles de cocina y comedor</field>
+        </record>
+        <record id="gob_category_239601" model="product.category">
+            <field name="name">2.3.9.6.01 Productos eléctricos y afines</field>
+        </record>
+        <record id="gob_category_239701" model="product.category">
+            <field name="name">2.3.9.7.01 Productos y útiles veterinarios</field>
+        </record>
+        <record id="gob_category_239801" model="product.category">
+            <field name="name">2.3.9.8.01 Repuestos</field>
+        </record>
+        <record id="gob_category_239802" model="product.category">
+            <field name="name">2.3.9.8.02 Accesorios</field>
+        </record>
+        <record id="gob_category_239901" model="product.category">
+            <field name="name">2.3.9.9.01 Productos y Útiles Varios  n.i.p</field>
+        </record>
+        <record id="gob_category_239902" model="product.category">
+            <field name="name">2.3.9.9.02 Bonos para útiles diversos</field>
+        </record>
+        <record id="gob_category_239904" model="product.category">
+            <field name="name">2.3.9.9.04 Productos y útiles de defensa y seguridad</field>
+        </record>
+        <record id="gob_category_241402" model="product.category">
+            <field name="name">2.4.1.4.02 Becas extranjeras</field>
+        </record>
+        <record id="gob_category_261101" model="product.category">
+            <field name="name">2.6.1.1.01 Muebles, equipos de oficina y estantería</field>
+        </record>
+        <record id="gob_category_261201" model="product.category">
+            <field name="name">2.6.1.2.01 Muebles de alojamiento, excepto de oficina y estantería</field>
+        </record>
+        <record id="gob_category_261301" model="product.category">
+            <field name="name">2.6.1.3.01 Equipos de tecnología de la información y comunicación</field>
+        </record>
+        <record id="gob_category_261401" model="product.category">
+            <field name="name">2.6.1.4.01 Electrodomésticos</field>
+        </record>
+        <record id="gob_category_261901" model="product.category">
+            <field name="name">2.6.1.9.01 Otros Mobiliarios y Equipos no Identificados  Precedentemente</field>
+        </record>
+        <record id="gob_category_262101" model="product.category">
+            <field name="name">2.6.2.1.01 Equipos y Aparatos Audiovisuales</field>
+        </record>
+        <record id="gob_category_262201" model="product.category">
+            <field name="name">2.6.2.2.01 Aparatos deportivos</field>
+        </record>
+        <record id="gob_category_262301" model="product.category">
+            <field name="name">2.6.2.3.01 Cámaras fotográficas y de video</field>
+        </record>
+        <record id="gob_category_262401" model="product.category">
+            <field name="name">2.6.2.4.01 Mobiliario y equipo educacional y recreativo</field>
+        </record>
+        <record id="gob_category_263101" model="product.category">
+            <field name="name">2.6.3.1.01 Equipo médico y de laboratorio</field>
+        </record>
+        <record id="gob_category_263201" model="product.category">
+            <field name="name">2.6.3.2.01 Instrumental médico y de laboratorio</field>
+        </record>
+        <record id="gob_category_263301" model="product.category">
+            <field name="name">2.6.3.3.01 Equipo veterinario</field>
+        </record>
+        <record id="gob_category_263401" model="product.category">
+            <field name="name">2.6.3.4.01 Equipo meteorológico, científico, geológico y sismológico</field>
+        </record>
+        <record id="gob_category_264101" model="product.category">
+            <field name="name">2.6.4.1.01 Automóviles y camiones</field>
+        </record>
+        <record id="gob_category_264201" model="product.category">
+            <field name="name">2.6.4.2.01 Carrocerías y remolques</field>
+        </record>
+        <record id="gob_category_264301" model="product.category">
+            <field name="name">2.6.4.3.01 Equipo aeronáutico</field>
+        </record>
+        <record id="gob_category_264401" model="product.category">
+            <field name="name">2.6.4.4.01 Equipo ferroviario</field>
+        </record>
+        <record id="gob_category_264501" model="product.category">
+            <field name="name">2.6.4.5.01 Embarcaciones</field>
+        </record>
+        <record id="gob_category_264601" model="product.category">
+            <field name="name">2.6.4.6.01 Equipo de tracción</field>
+        </record>
+        <record id="gob_category_264701" model="product.category">
+            <field name="name">2.6.4.7.01 Equipo de elevación</field>
+        </record>
+        <record id="gob_category_264801" model="product.category">
+            <field name="name">2.6.4.8.01 Otros equipos de transporte</field>
+        </record>
+        <record id="gob_category_265101" model="product.category">
+            <field name="name">2.6.5.1.01 Maquinaria y equipo agropecuario</field>
+        </record>
+        <record id="gob_category_265201" model="product.category">
+            <field name="name">2.6.5.2.01 Maquinaria y equipo industrial</field>
+        </record>
+        <record id="gob_category_265202" model="product.category">
+            <field name="name">2.6.5.2.02 Maquinaria y equipo para el tratamiento y suministro de agua</field>
+        </record>
+        <record id="gob_category_265301" model="product.category">
+            <field name="name">2.6.5.3.01 Maquinaria y equipo de construcción</field>
+        </record>
+        <record id="gob_category_265401" model="product.category">
+            <field name="name">2.6.5.4.01 Sistemas y equipos de aire acondicionado, calefacción y refrigeración industrial y comercial</field>
+        </record>
+        <record id="gob_category_265501" model="product.category">
+            <field name="name">2.6.5.5.01 Equipo de comunicación, telecomunicaciones y señalamiento</field>
+        </record>
+        <record id="gob_category_265601" model="product.category">
+            <field name="name">2.6.5.6.01 Equipo de generación eléctrica</field>
+        </record>
+        <record id="gob_category_265701" model="product.category">
+            <field name="name">2.6.5.7.01 Máquinas-herramientas</field>
+        </record>
+        <record id="gob_category_265801" model="product.category">
+            <field name="name">2.6.5.8.01 Otros equipos</field>
+        </record>
+        <record id="gob_category_266101" model="product.category">
+            <field name="name">2.6.6.1.01 Equipos de defensa</field>
+        </record>
+        <record id="gob_category_266201" model="product.category">
+            <field name="name">2.6.6.2.01 Equipos de seguridad</field>
+        </record>
+        <record id="gob_category_267101" model="product.category">
+            <field name="name">2.6.7.1.01 Bovinos</field>
+        </record>
+        <record id="gob_category_267201" model="product.category">
+            <field name="name">2.6.7.2.01 Porcinos</field>
+        </record>
+        <record id="gob_category_267301" model="product.category">
+            <field name="name">2.6.7.3.01 Aves</field>
+        </record>
+        <record id="gob_category_267401" model="product.category">
+            <field name="name">2.6.7.4.01 Ovinos y caprinos</field>
+        </record>
+        <record id="gob_category_267501" model="product.category">
+            <field name="name">2.6.7.5.01 Peces y acuicultura</field>
+        </record>
+        <record id="gob_category_267601" model="product.category">
+            <field name="name">2.6.7.6.01 Equinos</field>
+        </record>
+        <record id="gob_category_267701" model="product.category">
+            <field name="name">2.6.7.7.01 Especies menores y de zoológico</field>
+        </record>
+        <record id="gob_category_267801" model="product.category">
+            <field name="name">2.6.7.8.01 Otros activos biológicos que generan producción recurrente</field>
+        </record>
+        <record id="gob_category_267901" model="product.category">
+            <field name="name">2.6.7.9.01 Semillas, cultivos, plantas y árboles  que generan productos  recurrentes</field>
+        </record>
+        <record id="gob_category_268101" model="product.category">
+            <field name="name">2.6.8.1.01 Investigación y desarrollo</field>
+        </record>
+        <record id="gob_category_268201" model="product.category">
+            <field name="name">2.6.8.2.01 Exploración y evaluación minera</field>
+        </record>
+        <record id="gob_category_268301" model="product.category">
+            <field name="name">2.6.8.3.01 Programas de informática</field>
+        </record>
+        <record id="gob_category_268801" model="product.category">
+            <field name="name">2.6.8.8.01 Licencias Informáticas</field>
+        </record>
+        <record id="gob_category_269101" model="product.category">
+            <field name="name">2.6.9.1.01 Edificios residenciales (viviendas)</field>
+        </record>
+        <record id="gob_category_269201" model="product.category">
+            <field name="name">2.6.9.2.01 Edificios no residenciales</field>
+        </record>
+        <record id="gob_category_269501" model="product.category">
+            <field name="name">2.6.9.5.01 Metales y piedras preciosas</field>
+        </record>
+        <record id="gob_category_269502" model="product.category">
+            <field name="name">2.6.9.5.02 Antigüedades, bienes artísticos y otros objetos de arte</field>
+        </record>
+        <record id="gob_category_269503" model="product.category">
+            <field name="name">2.6.9.5.03 Objetos del patrimonio cultural</field>
+        </record>
+        <record id="gob_category_269601" model="product.category">
+            <field name="name">2.6.9.6.01 Accesorios para edificaciones residenciales y no residenciales</field>
+        </record>
+        <record id="gob_category_269901" model="product.category">
+            <field name="name">2.6.9.9.01 Otras estructuras y objetos de valor</field>
+        </record>
+        <record id="gob_category_271101" model="product.category">
+            <field name="name">2.7.1.1.01 Obras para edificación residencial (viviendas)</field>
+        </record>
+        <record id="gob_category_271201" model="product.category">
+            <field name="name">2.7.1.2.01 Obras para edificación no residencial</field>
+        </record>
+        <record id="gob_category_271301" model="product.category">
+            <field name="name">2.7.1.3.01 Obras para edificación de otras estructuras</field>
+        </record>
+        <record id="gob_category_271501" model="product.category">
+            <field name="name">2.7.1.5.01 Supervisión e inspección de obras en edificaciones</field>
+        </record>
+        <record id="gob_category_272101" model="product.category">
+            <field name="name">2.7.2.1.01 Obras hidráulicas y sanitarias</field>
+        </record>
+        <record id="gob_category_272201" model="product.category">
+            <field name="name">2.7.2.2.01 Obras de energía</field>
+        </record>
+        <record id="gob_category_272301" model="product.category">
+            <field name="name">2.7.2.3.01 Obras de telecomunicaciones</field>
+        </record>
+        <record id="gob_category_272401" model="product.category">
+            <field name="name">2.7.2.4.01 Infraestructura terrestre y obras anexas</field>
+        </record>
+        <record id="gob_category_272501" model="product.category">
+            <field name="name">2.7.2.5.01 Infraestructura marítima y aérea</field>
+        </record>
+        <record id="gob_category_272601" model="product.category">
+            <field name="name">2.7.2.6.01 Infraestructura y plantaciones agrícolas</field>
+        </record>
+        <record id="gob_category_272701" model="product.category">
+            <field name="name">2.7.2.7.01 Obras urbanísticas</field>
+        </record>
+        <record id="gob_category_272901" model="product.category">
+            <field name="name">2.7.2.9.01 Obras en plantas industriales, hidrocarburos y minas</field>
+        </record>
+        <record id="gob_category_000000" model="product.category">
+            <field name="name">VIATICOS AL PERSONAL</field>
+        </record>
+    </data>
+</odoo>
