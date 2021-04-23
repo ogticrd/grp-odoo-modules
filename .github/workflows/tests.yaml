@@ -13,10 +13,10 @@ on:
     types: [ opened, synchronize, reopened, labeled ]
 
 env:
-  REQUIRED_MODULES: "session_redis,logging_json,attachment_s3" # list of addional addons to install separated by comma
+  REQUIRED_MODULES: session_redis,logging_json,attachment_s3 # list of addional addons to install separated by comma
   GAR_BASE: us-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/odoo-gob
   HUB_BASE: gobdo/odoo-gob
-  IMAGE_LOCATION: "gcr.io/iterativo/dockerdoo"
+  IMAGE_LOCATION: gcr.io/iterativo/dockerdoo
   ENV: "dev"
 
 jobs:
@@ -72,7 +72,7 @@ jobs:
           username: _json_key
           password: ${{ secrets.GKE_SA_KEY }}
 
-      - name: Set workflow enviroment 
+      - name: Set workflow enviroment
         if: ${{ github.event.label.name == 'staging' }}
         run: |
           echo "ENV=staging" >> $GITHUB_ENV
