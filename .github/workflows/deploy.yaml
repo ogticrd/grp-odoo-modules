@@ -8,19 +8,13 @@ jobs:
   pr_commented:
     name: PR comment
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.event.comment.body, '/deploy') || startsWith(github.event.comment.body, '/staging') }}
+    if: startsWith(github.event.comment.body, '/deploy')
     outputs:
       deploy: ${{ steps.check.outputs.triggered }}
       base_ref: ${{ steps.comment-branch.outputs.base_ref }}
       head_ref: ${{ steps.comment-branch.outputs.head_ref }}
       head_ref_slug: ${{ steps.slugs.outputs.head_ref_slug }}
     steps:
-      - uses: Amwam/issue-comment-action@v1.3.1
-        with:
-          keywords: '["/staging"]'
-          labels: '["staging"]'
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-
       - uses: peter-evans/create-or-update-comment@v1
         with:
           comment-id: ${{ github.event.comment.id }}
@@ -38,31 +32,6 @@ jobs:
           BRANCH=${{ steps.comment-branch.outputs.head_ref }}
           BRANCH_URL=${BRANCH//[[:punct:]]/-}
           echo ::set-output name=head_ref_slug::$BRANCH_URL
-      # Extract database name from staging comment
-      - name: comment-slugs
-        id: comment_slugs
-        if: startsWith(github.event.comment.body, '/staging')
-        shell: bash
-        run: |
-          COMMENT="${{ github.event.comment.body }}"
-          DB_NAME=$(echo "$COMMENT" | sed "s/\/staging //g")
-          echo "$DB_NAME" > db_name.txt
-      - name: Upload artifact with db name
-        uses: actions/upload-artifact@v2
-        if: startsWith(github.event.comment.body, '/staging')
-        with:
-          name: db_name
-          path: db_name.txt
-          retention-days: 1
-
-      - name: Wait for build to succeed
-        uses: fountainhead/action-wait-for-check@v1.0.0
-        id: wait-for-build
-        if: startsWith(github.event.comment.body, '/staging')
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: build
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
   deploy:
     name: GKE Deploy
@@ -104,7 +73,9 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           reactions: heart
 
-      - uses: peter-evans/create-or-update-comment@v1
+      - name: Comment PR with QA URL
+        if: ${{ success() }}
+        uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |

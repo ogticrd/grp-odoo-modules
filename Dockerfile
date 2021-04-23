@@ -1,5 +1,6 @@
+ARG IMAGE_LOCATION=gcr.io/iterativo/dockerdoo
 ARG ODOO_VERSION=14.0
-FROM iterativodo/dockerdoo:${ODOO_VERSION}
+FROM ${IMAGE_LOCATION}:${ODOO_VERSION}
 
 ARG ODOO_VERSION
 ENV ODOO_EXTRA_ADDONS /mnt/extra-addons
