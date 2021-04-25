@@ -78,6 +78,7 @@ jobs:
           echo "ENV=staging" >> $GITHUB_ENV
 
       - name: Build & push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: .
