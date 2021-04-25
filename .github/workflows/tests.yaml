@@ -114,7 +114,7 @@ jobs:
       - name: K8s Template
         uses: actions/checkout@v2
         with:
-          repository: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/gke-dev-cluster.git
+          repository: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/odoo-kubernetes-infra
           path: gke-dev-cluster
           token: ${{ secrets.ACTIONS_PAT }}
           ref: master
@@ -153,12 +153,14 @@ jobs:
           PROJECT_ID: ${{ secrets.GKE_PROJECT }}
           REPO_NAME: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
           BRANCH_NAME: ${{ env.GITHUB_HEAD_REF_SLUG }}
+          ODOO_VERSION: ${{ env.GITHUB_BASE_REF_SLUG }}
           # URL to acccess
           REPO_URL: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}
           BRANCH_URL: ${{ env.GITHUB_HEAD_REF_SLUG_URL }}
           SHORT_SHA: ${{ env.GITHUB_SHA_SHORT }}
           STAGING_DB: ${{ env.DB_NAME }}
           ODOO_VERSION_URL_SLUG: ${{ env.GITHUB_BASE_REF_SLUG_URL }}
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
 
       - uses: actions/upload-artifact@v2
         with:
