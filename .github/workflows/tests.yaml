@@ -117,11 +117,11 @@ jobs:
           repository: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/odoo-kubernetes-infra
           path: gke-dev-cluster
           token: ${{ secrets.ACTIONS_PAT }}
-          ref: master
+          ref: main
 
       - name: Kustomize - Set image & Build
         run: |
-          cd gke-dev-cluster/deployments/odoo/${{ env.GITHUB_BASE_REF_SLUG }}/${{ env.ENV }}
+          cd gke-dev-cluster/deployments/odoo/${{ env.ENV }}
           kustomize edit set image ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
           kustomize build . -o deployment.yaml.tmpl
         # Download artifact with db name
