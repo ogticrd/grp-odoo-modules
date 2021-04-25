@@ -142,7 +142,7 @@ jobs:
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
         with:
-          input: gke-dev-cluster/deployments/odoo/${{ env.GITHUB_BASE_REF_SLUG }}/${{ env.ENV }}/deployment.yaml.tmpl
+          input: gke-dev-cluster/deployments/odoo/${{ env.ENV }}/deployment.yaml.tmpl
           output: ./deployment.yaml
         env:
           ENV: ${{ env.ENV }}
