@@ -106,24 +106,6 @@ jobs:
           cache-from: type=registry,ref=${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
           cache-to: type=inline
 
-      ### Set up Kustomize and build it
-      - uses: imranismail/setup-kustomize@v1
-        with:
-          kustomize-version: "3.1.0"
-
-      - name: K8s Template
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/odoo-kubernetes-infra
-          path: gke-dev-cluster
-          token: ${{ secrets.ACTIONS_PAT }}
-          ref: main
-
-      - name: Kustomize - Set image & Build
-        run: |
-          cd gke-dev-cluster/deployments/odoo/${{ env.ENV }}
-          kustomize edit set image ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
-          kustomize build . -o deployment.yaml.tmpl
         # Download artifact with db name
       - name: Download artifact with database name
         if: ${{ github.event.label.name == 'staging' }}
@@ -138,6 +120,20 @@ jobs:
         run: echo "Setting database env variable..."
         env:
           DB_NAME: $(cat db_name.txt)
+
+      ### Set up Kustomize and build it
+      - name: K8s Template
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/odoo-kubernetes-infra
+          path: gke-dev-cluster
+          token: ${{ secrets.ACTIONS_PAT }}
+          ref: main
+
+      - uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.1.0"
+      - run: kustomize build gke-dev-cluster/deployments/odoo/${{ env.ENV }} -o deployment.yaml.tmpl
 
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
@@ -154,6 +150,7 @@ jobs:
           REPO_NAME: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
           BRANCH_NAME: ${{ env.GITHUB_HEAD_REF_SLUG }}
           ODOO_VERSION: ${{ env.GITHUB_BASE_REF_SLUG }}
+          DEPLOY_IMAGE: ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
           # URL to acccess
           REPO_URL: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}
           BRANCH_URL: ${{ env.GITHUB_HEAD_REF_SLUG_URL }}

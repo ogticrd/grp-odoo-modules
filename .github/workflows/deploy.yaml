@@ -48,6 +48,8 @@ jobs:
           workflow: tests.yaml
           name: deployment-${{ needs.pr_commented.outputs.head_ref }}
 
+      - run: cat deployment.yaml
+
       - uses: google-github-actions/get-gke-credentials@v0.2.1
         with:
           cluster_name: ${{ secrets.GKE_CLUSTER }}
