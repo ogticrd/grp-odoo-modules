@@ -186,8 +186,8 @@ jobs:
         image: postgres:12-alpine
         env:
           POSTGRES_DB: postgres
-          POSTGRES_USER: ${{ secrets.DB_ENV_POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
         # needed because the postgres container does not provide a healthcheck
         options: >-
           --health-cmd pg_isready
@@ -215,4 +215,7 @@ jobs:
           RUN_TESTS: "1"
           LOG_LEVEL: test
           EXTRA_MODULES: ${{ needs.build.outputs.get_modules }}
+          TEST_DB: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG_URL }}.${{ secrets.DEPLOY_DOMAIN }}
           PGHOST: localhost
+          PGUSER: odoo
+          PGPASSWORD: odoo
