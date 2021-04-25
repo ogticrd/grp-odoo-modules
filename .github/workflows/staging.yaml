@@ -1,0 +1,45 @@
+name: Staging
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  pr_commented:
+    name: Staging PR comment
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.comment.body, '/staging')
+    steps:
+      - uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: "rocket"
+
+      # needed to be able to check out correct branch
+      - uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract database name from staging comment
+      - name: comment-slugs
+        id: comment_slugs
+        if: startsWith(github.event.comment.body, '/staging')
+        shell: bash
+        run: |
+          COMMENT="${{ github.event.comment.body }}"
+          DB_NAME=$(echo "$COMMENT" | sed "s/\/staging //g")
+          if [[ "$DB_NAME" != "/staging" ]]
+          then echo "$DB_NAME" > db_name.txt; 
+          else echo "Missing db name" && exit 1; fi
+      - uses: Amwam/issue-comment-action@v1.3.1
+        with:
+          keywords: '["/staging"]'
+          labels: '["staging"]'
+          github-token: "${{ secrets.ACTIONS_PAT }}"
+
+      - name: Upload artifact with db name
+        uses: actions/upload-artifact@v2
+        with:
+          name: db_name-${{ steps.comment-branch.outputs.head_ref }}
+          path: db_name.txt

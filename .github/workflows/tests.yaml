@@ -13,7 +13,11 @@ on:
     types: [ opened, synchronize, reopened, labeled ]
 
 env:
-  REQUIRED_MODULES: "session_redis,logging_json,attachment_s3" # list of addional addons to install separated by comma
+  REQUIRED_MODULES: session_redis,logging_json,attachment_s3 # list of addional addons to install separated by comma
+  GAR_BASE: us-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/odoo-gob
+  HUB_BASE: gobdo/odoo-gob
+  IMAGE_LOCATION: gcr.io/iterativo/dockerdoo
+  ENV: "dev"
 
 jobs:
   build:
@@ -25,6 +29,7 @@ jobs:
       image_digest: ${{ steps.docker_build.outputs.digest }}
 
     steps:
+      ### Dependencies
       - uses: rlespinasse/github-slug-action@v3.x
 
       - name: Checkout local
@@ -46,6 +51,8 @@ jobs:
           curl https://raw.githubusercontent.com/iterativo-git/dockerdoo/${{ env.GITHUB_BASE_REF_SLUG }}/resources/getaddons.py -o getaddons.py
           output=$(python -c "from getaddons import get_modules; print(','.join(get_modules('./${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}', depth=3)))")
           echo "::set-output name=modules::$output"
+
+      ### Build the Docker image and Push it
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         with:
@@ -58,21 +65,27 @@ jobs:
             /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ env.GITHUB_HEAD_REF_SLUG }}-${{ env.GITHUB_SHA_SHORT }}
 
-      - name: Login to GCR
+      - name: Login to GAR
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
+          registry: us-docker.pkg.dev
           username: _json_key
           password: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Set workflow enviroment
+        if: ${{ github.event.label.name == 'staging' }}
+        run: |
+          echo "ENV=staging" >> $GITHUB_ENV
 
       - name: Build & push
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}/Dockerfile
-          tags: ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          tags: ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
           build-args: |
             EXTRA_MODULES=${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
+            IMAGE_LOCATION=${{ env.IMAGE_LOCATION }}
             ODOO_VERSION=${{ env.GITHUB_BASE_REF_SLUG }}
             DB_PORT_5432_TCP_ADDR=${{ secrets.DB_PORT_5432_TCP_ADDR }}
             DB_ENV_POSTGRES_USER=${{ secrets.DB_ENV_POSTGRES_USER }}
@@ -90,16 +103,10 @@ jobs:
             SERVER_WIDE_MODULES=base,web,session_redis,logging_json,attachment_s3
             DBFILTER=False
           push: true
-          cache-from: type=registry,ref=ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
-          cache-to: type=local,dest=/tmp/.buildx-cache-new
+          cache-from: type=registry,ref=${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          cache-to: type=inline
 
-        # Temp fix
-        # https://github.com/docker/build-push-action/issues/252
-        # https://github.com/moby/buildkit/issues/1896
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+      ### Set up Kustomize and build it
       - uses: imranismail/setup-kustomize@v1
         with:
           kustomize-version: "3.1.0"
@@ -107,23 +114,38 @@ jobs:
       - name: K8s Template
         uses: actions/checkout@v2
         with:
-          repository: indexa-git/gke-dev-cluster.git
+          repository: ${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/odoo-kubernetes-infra
           path: gke-dev-cluster
           token: ${{ secrets.ACTIONS_PAT }}
-          ref: master
+          ref: main
 
       - name: Kustomize - Set image & Build
         run: |
-          cd gke-dev-cluster/deployments/odoo/${{ env.GITHUB_BASE_REF_SLUG }}/dev
-          kustomize edit set image ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
+          cd gke-dev-cluster/deployments/odoo/${{ env.ENV }}
+          kustomize edit set image ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
           kustomize build . -o deployment.yaml.tmpl
+        # Download artifact with db name
+      - name: Download artifact with database name
+        if: ${{ github.event.label.name == 'staging' }}
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: staging.yaml
+          name: db_name-${{ env.GITHUB_HEAD_REF_SLUG }}
+
+      - name: Set env with database name
+        if: ${{ github.event.label.name == 'staging' }}
+        run: echo "Setting database env variable..."
+        env:
+          DB_NAME: $(cat db_name.txt)
+
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
         with:
-          input: gke-dev-cluster/deployments/odoo/${{ env.GITHUB_BASE_REF_SLUG }}/dev/deployment.yaml.tmpl
+          input: gke-dev-cluster/deployments/odoo/${{ env.ENV }}/deployment.yaml.tmpl
           output: ./deployment.yaml
         env:
-          ENV: dev
+          ENV: ${{ env.ENV }}
           GKE_LOCATION: ${{ secrets.GKE_ZONE }}
           # Modules to Install
           EXTRA_MODULES: ${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
@@ -131,21 +153,35 @@ jobs:
           PROJECT_ID: ${{ secrets.GKE_PROJECT }}
           REPO_NAME: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
           BRANCH_NAME: ${{ env.GITHUB_HEAD_REF_SLUG }}
+          ODOO_VERSION: ${{ env.GITHUB_BASE_REF_SLUG }}
           # URL to acccess
           REPO_URL: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}
-          BRANCH_URL: ${{ env.GITHUB_HEAD_REF_SLUG }}
+          BRANCH_URL: ${{ env.GITHUB_HEAD_REF_SLUG_URL }}
           SHORT_SHA: ${{ env.GITHUB_SHA_SHORT }}
+          STAGING_DB: ${{ env.DB_NAME }}
+          ODOO_VERSION_URL_SLUG: ${{ env.GITHUB_BASE_REF_SLUG_URL }}
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
 
       - uses: actions/upload-artifact@v2
         with:
           name: deployment-${{ env.GITHUB_HEAD_REF_SLUG }}
           path: deployment.yaml
 
+      - name: Comment to trigger deploy
+        if: ${{ github.event.label.name == 'staging' }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.number }}
+          token: ${{ secrets.ACTIONS_PAT }}
+          body: |
+            /deploy
+          reactions: hooray
+
   test:
     name: Test Modules
     needs: ["build"]
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    if: ${{ github.event_name == 'pull_request' && github.event.label.name != 'staging' }}
 
     services:
       db:
@@ -166,17 +202,17 @@ jobs:
     steps:
       - uses: rlespinasse/github-slug-action@v3.x
 
-      - name: Login to GCR
+      - name: Login to GAR
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
+          registry: us-docker.pkg.dev
           username: _json_key
           password: ${{ secrets.GKE_SA_KEY }}
 
       - name: Run Odoo tests
         run: |
-          docker pull ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
-          docker run -e RUN_TESTS -e LOG_LEVEL -e EXTRA_MODULES -e PGHOST --network="host" --name odoo -t ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          docker pull ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          docker run -e RUN_TESTS -e LOG_LEVEL -e EXTRA_MODULES -e PGHOST --network="host" --name odoo -t ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
         env:
           RUN_TESTS: "1"
           LOG_LEVEL: test
