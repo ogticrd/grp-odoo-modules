@@ -88,10 +88,10 @@ jobs:
             EXTRA_MODULES=${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
             IMAGE_LOCATION=${{ env.IMAGE_LOCATION }}
             ODOO_VERSION=${{ env.GITHUB_BASE_REF_SLUG }}
-            DB_PORT_5432_TCP_ADDR=${{ secrets.DB_PORT_5432_TCP_ADDR }}
-            DB_ENV_POSTGRES_USER=${{ secrets.DB_ENV_POSTGRES_USER }}
-            DB_PORT_5432_TCP_PORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
-            DB_ENV_POSTGRES_PASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
+            PGHOST=${{ secrets.DB_PORT_5432_TCP_ADDR }}
+            PGUSER=${{ secrets.DB_ENV_POSTGRES_USER }}
+            PGPORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
+            PGPASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
             ODOO_SESSION_REDIS=${{ secrets.ODOO_SESSION_REDIS }}
             ODOO_SESSION_REDIS_HOST=${{ secrets.ODOO_SESSION_REDIS_HOST }}
             ODOO_LOGGING_JSON=${{ secrets.ODOO_LOGGING_JSON }}
@@ -100,7 +100,7 @@ jobs:
             AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
             AWS_BUCKETNAME=${{ secrets.AWS_BUCKETNAME }}
-            DBNAME={{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG }}.{{ secrets.ROOT_DOMAIN }}
+            DBNAME=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG }}.${{ secrets.ROOT_DOMAIN }}
             SERVER_WIDE_MODULES=base,web,session_redis,logging_json,attachment_s3
             DBFILTER=False
           push: true
