@@ -60,7 +60,7 @@ jobs:
       - name: Deploy
         uses: docker://gcr.io/cloud-builders/gke-deploy
         with:
-          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ needs.pr_commented.outputs.base_ref }}
+          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ needs.pr_commented.outputs.base_ref }} --timeout 1800
 
       - name: Failure reaction
         if: ${{ failure() }}
