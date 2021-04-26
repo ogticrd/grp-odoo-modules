@@ -36,6 +36,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends build-e
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade anthem
+
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
 RUN if [ "${ODOO_VERSION}" = "14.0" ]; then \
@@ -77,6 +79,8 @@ ENV RUNNING_ENV ${RUNNING_ENV}
 ARG ODOO_SESSION_REDIS
 ENV ODOO_SESSION_REDIS ${ODOO_SESSION_REDIS}
 ARG ODOO_SESSION_REDIS_HOST
+ARG ODOO_SESSION_REDIS_PREFIX
+ENV ODOO_SESSION_REDIS_PREFIX ${ODOO_SESSION_REDIS_PREFIX}
 ENV ODOO_SESSION_REDIS_HOST ${ODOO_SESSION_REDIS_HOST}
 ARG ODOO_LOGGING_JSON
 ENV ODOO_LOGGING_JSON ${ODOO_LOGGING_JSON}

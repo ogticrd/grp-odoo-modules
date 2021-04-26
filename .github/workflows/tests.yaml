@@ -95,6 +95,7 @@ jobs:
             PGPASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
             ODOO_SESSION_REDIS=${{ secrets.ODOO_SESSION_REDIS }}
             ODOO_SESSION_REDIS_HOST=${{ secrets.ODOO_SESSION_REDIS_HOST }}
+            ODOO_SESSION_REDIS_PREFIX=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-odoo-${{ env.ENV }}
             ODOO_LOGGING_JSON=${{ secrets.ODOO_LOGGING_JSON }}
             AWS_HOST=${{ secrets.AWS_HOST }}
             AWS_REGION=${{ secrets.AWS_REGION }}
