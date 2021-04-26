@@ -22,6 +22,7 @@ RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/product-attribute.git ${ODOO_EXTRA_ADDONS}/oca/product-attribute \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/web.git ${ODOO_EXTRA_ADDONS}/oca/web \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-tools.git ${ODOO_EXTRA_ADDONS}/oca/server-tools \
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-env.git ${ODOO_EXTRA_ADDONS}/oca/server-env \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-ux.git ${ODOO_EXTRA_ADDONS}/oca/server-ux \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/connector.git ${ODOO_EXTRA_ADDONS}/oca/connector \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/rest-framework.git ${ODOO_EXTRA_ADDONS}/oca/rest-framework \
@@ -35,6 +36,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends build-e
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade anthem
+
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
 RUN if [ "${ODOO_VERSION}" = "14.0" ]; then \
@@ -43,5 +46,55 @@ RUN if [ "${ODOO_VERSION}" = "14.0" ]; then \
     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \
     git status; \
     fi
+
+# Odoo Configuration file variables
+ARG ADMIN_PASSWORD
+ENV ADMIN_PASSWORD ${ADMIN_PASSWORD}
+ARG PGHOST
+ENV PGHOST ${PGHOST}
+ARG PGUSER
+ENV PGUSER ${PGUSER}
+ARG PGPORT
+ENV PGPORT ${PGPORT}
+ARG PGPASSWORD
+ENV PGPASSWORD ${PGPASSWORD}
+ARG HTTP_INTERFACE
+ENV HTTP_INTERFACE ${HTTP_INTERFACE}
+ARG HTTP_PORT
+ENV HTTP_PORT ${HTTP_PORT}
+ARG DBFILTER
+ENV DBFILTER ${DBFILTER}
+ARG DBNAME
+ENV DBNAME ${DBNAME}
+ARG SERVER_WIDE_MODULES
+ENV SERVER_WIDE_MODULES ${SERVER_WIDE_MODULES}
+
+# 
+ARG EXTRA_MODULES
+ENV EXTRA_MODULES ${EXTRA_MODULES}
+
+# camptocamp variables
+ARG RUNNING_ENV
+ENV RUNNING_ENV ${RUNNING_ENV}
+ARG ODOO_SESSION_REDIS
+ENV ODOO_SESSION_REDIS ${ODOO_SESSION_REDIS}
+ARG ODOO_SESSION_REDIS_HOST
+ARG ODOO_SESSION_REDIS_PREFIX
+ENV ODOO_SESSION_REDIS_PREFIX ${ODOO_SESSION_REDIS_PREFIX}
+ENV ODOO_SESSION_REDIS_HOST ${ODOO_SESSION_REDIS_HOST}
+ARG ODOO_LOGGING_JSON
+ENV ODOO_LOGGING_JSON ${ODOO_LOGGING_JSON}
+ARG AWS_HOST
+ENV AWS_HOST ${AWS_HOST}
+ARG AWS_REGION
+ENV AWS_REGION ${AWS_REGION}
+ARG AWS_ACCESS_KEY_ID
+ENV AWS_ACCESS_KEY_ID ${AWS_ACCESS_KEY_ID}
+ARG AWS_SECRET_ACCESS_KEY
+ENV AWS_SECRET_ACCESS_KEY ${AWS_SECRET_ACCESS_KEY}
+ARG AWS_BUCKETNAME
+ENV AWS_BUCKETNAME ${AWS_BUCKETNAME}
+ARG AWS_BUCKETNAME_UNSTRUCTURED
+ENV AWS_BUCKETNAME_UNSTRUCTURED ${AWS_BUCKETNAME_UNSTRUCTURED}
 
 USER 1000

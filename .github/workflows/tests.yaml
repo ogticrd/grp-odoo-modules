@@ -5,15 +5,15 @@ on:
     branches:
       - "[0-9]+.0"
     paths:
-      - '**/workflows/**'
-      - '**/src/**'
-      - '**/i18n/**'
-      - '**.py'
-      - '**.xml'
-    types: [ opened, synchronize, reopened, labeled ]
+      - "**/workflows/**"
+      - "**/src/**"
+      - "**/i18n/**"
+      - "**.py"
+      - "**.xml"
+    types: [opened, synchronize, reopened, labeled]
 
 env:
-  REQUIRED_MODULES: session_redis,logging_json,attachment_s3 # list of addional addons to install separated by comma
+  REQUIRED_MODULES: cloud_platform_exoscale # list of addional addons to install separated by comma
   GAR_BASE: us-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/odoo-gob
   HUB_BASE: gobdo/odoo-gob
   IMAGE_LOCATION: gcr.io/iterativo/dockerdoo
@@ -78,28 +78,32 @@ jobs:
           echo "ENV=staging" >> $GITHUB_ENV
 
       - name: Build & push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./${{ env.GITHUB_REPOSITORY_OWNER_PART_SLUG }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}/Dockerfile
           tags: ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
           build-args: |
+            RUNNING_ENV=test
             EXTRA_MODULES=${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
             IMAGE_LOCATION=${{ env.IMAGE_LOCATION }}
             ODOO_VERSION=${{ env.GITHUB_BASE_REF_SLUG }}
-            DB_PORT_5432_TCP_ADDR=${{ secrets.DB_PORT_5432_TCP_ADDR }}
-            DB_ENV_POSTGRES_USER=${{ secrets.DB_ENV_POSTGRES_USER }}
-            DB_PORT_5432_TCP_PORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
-            DB_ENV_POSTGRES_PASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
+            PGHOST=${{ secrets.DB_PORT_5432_TCP_ADDR }}
+            PGUSER=${{ secrets.DB_ENV_POSTGRES_USER }}
+            PGPORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
+            PGPASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
             ODOO_SESSION_REDIS=${{ secrets.ODOO_SESSION_REDIS }}
             ODOO_SESSION_REDIS_HOST=${{ secrets.ODOO_SESSION_REDIS_HOST }}
+            ODOO_SESSION_REDIS_PREFIX=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-odoo-${{ env.ENV }}
             ODOO_LOGGING_JSON=${{ secrets.ODOO_LOGGING_JSON }}
             AWS_HOST=${{ secrets.AWS_HOST }}
             AWS_REGION=${{ secrets.AWS_REGION }}
             AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
             AWS_BUCKETNAME=${{ secrets.AWS_BUCKETNAME }}
-            DBNAME={{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG }}.{{ secrets.ROOT_DOMAIN }}
+            AWS_BUCKETNAME_UNSTRUCTURED=true
+            DBNAME=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG_URL }}.${{ secrets.ROOT_DOMAIN }}
             SERVER_WIDE_MODULES=base,web,session_redis,logging_json,attachment_s3
             DBFILTER=False
           push: true
@@ -185,8 +189,8 @@ jobs:
         image: postgres:12-alpine
         env:
           POSTGRES_DB: postgres
-          POSTGRES_USER: odoo
-          POSTGRES_PASSWORD: odoo
+          POSTGRES_USER: ${{ secrets.DB_ENV_POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
         # needed because the postgres container does not provide a healthcheck
         options: >-
           --health-cmd pg_isready
@@ -214,4 +218,7 @@ jobs:
           RUN_TESTS: "1"
           LOG_LEVEL: test
           EXTRA_MODULES: ${{ needs.build.outputs.get_modules }}
+          TEST_DB: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG_URL }}.${{ secrets.DEPLOY_DOMAIN }}
           PGHOST: localhost
+          PGUSER: ${{ secrets.DB_ENV_POSTGRES_USER }}
+          PGPASSWORD: ${{ secrets.DB_ENV_POSTGRES_PASSWORD }}

@@ -60,7 +60,7 @@ jobs:
       - name: Deploy
         uses: docker://gcr.io/cloud-builders/gke-deploy
         with:
-          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ needs.pr_commented.outputs.base_ref }}
+          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ needs.pr_commented.outputs.base_ref }} --timeout 1800
 
       - name: Failure reaction
         if: ${{ failure() }}
@@ -82,5 +82,5 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             **QA URL:** 
-            https://${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}-${{ needs.pr_commented.outputs.head_ref_slug }}.indexa.do
+            https://${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}-${{ needs.pr_commented.outputs.head_ref_slug }}.${{ secrets.ROOT_DOMAIN }}
           reactions: eyes
