@@ -22,6 +22,7 @@ RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/product-attribute.git ${ODOO_EXTRA_ADDONS}/oca/product-attribute \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/web.git ${ODOO_EXTRA_ADDONS}/oca/web \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-tools.git ${ODOO_EXTRA_ADDONS}/oca/server-tools \
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-env.git ${ODOO_EXTRA_ADDONS}/oca/server-env \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-ux.git ${ODOO_EXTRA_ADDONS}/oca/server-ux \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/connector.git ${ODOO_EXTRA_ADDONS}/oca/connector \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/rest-framework.git ${ODOO_EXTRA_ADDONS}/oca/rest-framework \

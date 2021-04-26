@@ -82,5 +82,5 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             **QA URL:** 
-            https://${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}-${{ needs.pr_commented.outputs.head_ref_slug }}.indexa.do
+            https://${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}-${{ needs.pr_commented.outputs.head_ref_slug }}.${{ secrets.ROOT_DOMAIN }}
           reactions: eyes
