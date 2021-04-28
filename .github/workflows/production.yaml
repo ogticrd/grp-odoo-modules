@@ -10,29 +10,18 @@ on:
       - "**/i18n/**"
       - "**.py"
       - "**.xml"
-  pull_request:
-    branches:
-      - "[0-9]+.0"
-    paths:
-      - "**/workflows/**"
-      - "**/src/**"
-      - "**/i18n/**"
-      - "**.py"
-      - "**.xml"
-    types: [ opened, synchronize, reopened, labeled ]
 
 env:
   REQUIRED_MODULES: cloud_platform_exoscale # list of addional addons to install separated by comma
   GAR_BASE: us-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/odoo-gob
   HUB_BASE: gobdo/odoo-gob
   IMAGE_LOCATION: gcr.io/iterativo/dockerdoo
-  ENV: "test"
+  ENV: "prod"
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
     outputs:
       get_modules: ${{ steps.get_modules.outputs.modules }}
       image_digest: ${{ steps.docker_build.outputs.digest }}
@@ -52,12 +41,12 @@ jobs:
           repository: odoo/enterprise
           token: ${{ secrets.ACTIONS_PAT }}
           path: enterprise
-          ref: ${{ env.GITHUB_BASE_REF_SLUG }}
+          ref: ${{ env.GITHUB_REF_SLUG }}
 
       - name: Select Odoo modules to install
         id: get_modules
         run: |
-          curl https://raw.githubusercontent.com/iterativo-git/dockerdoo/${{ env.GITHUB_BASE_REF_SLUG }}/resources/getaddons.py -o getaddons.py
+          curl https://raw.githubusercontent.com/iterativo-git/dockerdoo/${{ env.GITHUB_REF_SLUG }}/resources/getaddons.py -o getaddons.py
           output=$(python -c "from getaddons import get_modules; print(','.join(get_modules('./${{ env.GITHUB_REPOSITORY_SLUG_URL }}', depth=3)))")
           echo "::set-output name=modules::$output"
 
@@ -72,7 +61,7 @@ jobs:
         with:
           path: |
             /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ env.GITHUB_HEAD_REF_SLUG }}-${{ env.GITHUB_SHA_SHORT }}
+          key: ${{ runner.os }}-buildx-${{ env.GITHUB_REF_SLUG }}-${{ env.GITHUB_SHA_SHORT }}
 
       - name: Login to GAR
         uses: docker/login-action@v1
@@ -81,10 +70,11 @@ jobs:
           username: _json_key
           password: ${{ secrets.GKE_SA_KEY }}
 
-      - name: Set env to integration
-        if: ${{ github.event.label.name == 'staging' }}
-        run: |
-          echo "ENV=integration" >> $GITHUB_ENV
+      - name: Login to HUB
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build & push
         id: docker_build
@@ -92,12 +82,14 @@ jobs:
         with:
           context: .
           file: ./${{ env.GITHUB_REPOSITORY_SLUG_URL }}/Dockerfile
-          tags: ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          tags: |
+            ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_REF_SLUG }}
+            ${{ env.HUB_BASE }}:${{ env.GITHUB_REF_SLUG }}
           build-args: |
             RUNNING_ENV=${{ env.ENV }}
             EXTRA_MODULES=${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
             IMAGE_LOCATION=${{ env.IMAGE_LOCATION }}
-            ODOO_VERSION=${{ env.GITHUB_BASE_REF_SLUG }}
+            ODOO_VERSION=${{ env.GITHUB_REF_SLUG }}
             PGHOST=${{ secrets.DB_PORT_5432_TCP_ADDR }}
             PGUSER=${{ secrets.DB_ENV_POSTGRES_USER }}
             PGPORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
@@ -112,27 +104,12 @@ jobs:
             AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
             AWS_BUCKETNAME=${{ secrets.AWS_BUCKETNAME }}
             AWS_BUCKETNAME_UNSTRUCTURED=true
-            DBNAME=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG_URL }}.${{ secrets.ROOT_DOMAIN }}
-            SERVER_WIDE_MODULES=base,web,session_redis,logging_json,attachment_s3
+            DBNAME=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_REF_SLUG_URL }}.${{ secrets.ROOT_DOMAIN }}
+            SERVER_WIDE_MODULES=base,web,${{ env.REQUIRED_MODULES }}
             DBFILTER=False
           push: true
-          cache-from: type=registry,ref=${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
+          cache-from: type=registry,ref=${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_REF_SLUG }}
           cache-to: type=inline
-
-        # Download artifact with db name
-      - name: Download artifact with database name
-        if: ${{ github.event.label.name == 'staging' }}
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: staging.yaml
-          name: db_name-${{ env.GITHUB_HEAD_REF_SLUG }}
-
-      - name: Set env with database name
-        if: ${{ github.event.label.name == 'staging' }}
-        run: echo "Setting database env variable..."
-        env:
-          DB_NAME: $(cat db_name.txt)
 
       ### Set up Kustomize and build it
       - name: K8s Template
@@ -161,73 +138,44 @@ jobs:
           # Image to Deploy
           PROJECT_ID: ${{ secrets.GKE_PROJECT }}
           REPO_NAME: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
-          BRANCH_NAME: ${{ env.GITHUB_HEAD_REF_SLUG }}
-          ODOO_VERSION: ${{ env.GITHUB_BASE_REF_SLUG }}
+          BRANCH_NAME: ${{ env.GITHUB_REF_SLUG}}
+          ODOO_VERSION: ${{ env.GITHUB_REF_SLUG}}
           DEPLOY_IMAGE: ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}@${{ steps.docker_build.outputs.digest }}
           # URL to acccess
           REPO_URL: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}
-          BRANCH_URL: ${{ env.GITHUB_HEAD_REF_SLUG_URL }}
+          BRANCH_URL: ${{ env.GITHUB_REF_SLUG_URL }}
           SHORT_SHA: ${{ env.GITHUB_SHA_SHORT }}
-          STAGING_DB: ${{ env.DB_NAME }}
-          ODOO_VERSION_URL_SLUG: ${{ env.GITHUB_BASE_REF_SLUG_URL }}
+          ODOO_VERSION_URL_SLUG: ${{ env.GITHUB_REF_SLUG_URL }}
           DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: deployment-${{ env.GITHUB_HEAD_REF_SLUG }}
+          name: deployment-${{ env.GITHUB_REF_SLUG }}
           path: deployment.yaml
 
-      - name: Comment to trigger deploy
-        if: ${{ github.event.label.name == 'staging' }}
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: ${{ github.event.number }}
-          token: ${{ secrets.ACTIONS_PAT }}
-          body: |
-            /deploy
-          reactions: hooray
-
-  test:
-    name: Test Modules
+  deploy:
+    name: GKE Deploy
     needs: ["build"]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && github.event.label.name != 'staging' }}
-
-    services:
-      db:
-        image: postgres:12-alpine
-        env:
-          POSTGRES_DB: postgres
-          POSTGRES_USER: ${{ secrets.DB_ENV_POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
-        # needed because the postgres container does not provide a healthcheck
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
 
     steps:
       - uses: rlespinasse/github-slug-action@v3.x
 
-      - name: Login to GAR
-        uses: docker/login-action@v1
+      - name: Download modules results
+        uses: actions/download-artifact@v2
         with:
-          registry: us-docker.pkg.dev
-          username: _json_key
-          password: ${{ secrets.GKE_SA_KEY }}
+          name: deployment-${{ env.GITHUB_REF_SLUG }}
 
-      - name: Run Odoo tests
-        run: |
-          docker pull ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
-          docker run -e RUN_TESTS -e LOG_LEVEL -e EXTRA_MODULES -e PGHOST --network="host" --name odoo -t ${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG }}
-        env:
-          RUN_TESTS: "1"
-          LOG_LEVEL: test
-          EXTRA_MODULES: ${{ needs.build.outputs.get_modules }}
-          TEST_DB: ${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_HEAD_REF_SLUG_URL }}.${{ secrets.DEPLOY_DOMAIN }}
-          PGHOST: localhost
-          PGUSER: ${{ secrets.DB_ENV_POSTGRES_USER }}
-          PGPASSWORD: ${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
+      - run: cat deployment.yaml
+
+      - uses: google-github-actions/get-gke-credentials@v0.2.1
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER }}
+          location: ${{ secrets.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+
+      - name: Deploy
+        uses: docker://gcr.io/cloud-builders/gke-deploy
+        with:
+          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ env.GITHUB_REF_SLUG }} --timeout 1800s
