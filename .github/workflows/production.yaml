@@ -178,4 +178,4 @@ jobs:
       - name: Deploy
         uses: docker://gcr.io/cloud-builders/gke-deploy
         with:
-          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ env.GITHUB_REF_SLUG }} --timeout 1800
+          args: run --filename=deployment.yaml --app=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }} --version=${{ env.GITHUB_REF_SLUG }} --timeout 1800s
