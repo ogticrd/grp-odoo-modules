@@ -7,11 +7,11 @@
                         <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
                     </div>
                     <div class="col-4 text-lg-center text-center">
-                        <img src="/doc_gov_header/static/img/escudo.png" style="max-height: 45px;" alt="Escudo"/>
+                        <img t-if="company.l10n_do_gov_header_center_image" t-att-src="image_data_uri(company.l10n_do_gov_header_center_image)" style="max-height: 45px;" alt="Escudo"/>
                         <p t-field="company.l10n_do_gov_header_center_data"/>
                     </div>
                     <div class="col-4 text-lg-right text-right">
-                        <img src="/doc_gov_header/static/img/programa.png" style="max-height: 45px;" alt="Programa"/>
+                        <img t-if="company.l10n_do_gov_header_right_image" t-att-src="image_data_uri(company.l10n_do_gov_header_right_image)" style="max-height: 45px;" alt="Programa"/>
                     </div>
                 </div>
                 <div class="row">
