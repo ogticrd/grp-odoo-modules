@@ -1,7 +1,7 @@
 {
     "name": "Stock Picking Show Qty",
     "summary": """
-        Show quantity on picking operation slip even if in draft 
+    Show quantity on picking operation slip even if in draft
     """,
     "author": "José López, OPTIC",
     "website": "https://optic.gob.do",
