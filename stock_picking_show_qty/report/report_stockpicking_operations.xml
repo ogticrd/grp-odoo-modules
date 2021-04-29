@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_picking_inherited"
+              inherit_id="stock.report_picking">
+        <xpath expr="//span[@t-field='ml.product_uom_qty']" position="replace">
+            <span t-if="o.state not in ('assigned', 'done')"
+                  t-field="ml.product_uom_qty"/>
+        </xpath>
+        <xpath expr="//span[@t-field='ml.qty_done']" position="replace">
+            <span t-if="o.state in ('assigned', 'done')" t-field="ml.qty_done"/>
+        </xpath>
+    </template>
+
+</odoo>
