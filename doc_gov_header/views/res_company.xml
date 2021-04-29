@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="res_company_form" model="ir.ui.view">
+        <field name="name">res_company.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Dominican Government">
+                    <group>
+                        <group>
+                            <field name="l10n_do_gov_header_center_data"/>
+                            <field name="l10n_do_gov_header_center_image" widget="image" class="oe_avatar"/>
+                            <field name="l10n_do_gov_header_right_image" widget="image" class="oe_avatar"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
