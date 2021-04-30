@@ -4,14 +4,14 @@
             <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
                 <div class="row">
                     <div class="col-4">
-                        <img src="/doc_gov_header/static/img/programa.png" style="max-height: 45px;" alt="Programa"/>
-                    </div>
-                    <div class="col-4 text-lg-center">
-                        <img src="/doc_gov_header/static/img/escudo.png" style="max-height: 45px;" alt="Escudo"/>
-                        <p t-field="company.report_header" name="moto"/>
-                    </div>
-                    <div class="col-4 text-lg-right">
                         <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+                    </div>
+                    <div class="col-4 text-lg-center text-center">
+                        <img t-if="company.l10n_do_gov_header_center_image" t-att-src="image_data_uri(company.l10n_do_gov_header_center_image)" style="max-height: 45px;" alt="Escudo"/>
+                        <p t-field="company.l10n_do_gov_header_center_data"/>
+                    </div>
+                    <div class="col-4 text-lg-right text-right">
+                        <img t-if="company.l10n_do_gov_header_right_image" t-att-src="image_data_uri(company.l10n_do_gov_header_right_image)" style="max-height: 45px;" alt="Programa"/>
                     </div>
                 </div>
                 <div class="row">
@@ -52,5 +52,6 @@
                 </div>
             </div>
         </template>
+
     </data>
 </odoo>

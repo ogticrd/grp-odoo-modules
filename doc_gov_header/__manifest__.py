@@ -14,6 +14,7 @@
     'depends': ['base'],
 
     'data': [
+        'views/res_company.xml',
         'views/templates.xml',
     ],
 }
