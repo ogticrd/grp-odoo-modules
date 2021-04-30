@@ -53,21 +53,5 @@
             </div>
         </template>
 
-        <template id="l10n_do_gov_stock_footer" inherit_id="stock.report_picking">
-            <xpath expr="//div[hasclass('page')]/*[last()]" position="after">
-                <table class="table">
-                    <tr>
-                        <td>Revisado</td>
-                        <td>Autorizado</td>
-                        <td>Recibido</td>
-                    </tr>
-                    <tr style="padding-top:200px">
-                        <td>.................</td>
-                        <td>.................</td>
-                        <td>.................</td>
-                    </tr>
-                </table>
-            </xpath>
-        </template>
     </data>
 </odoo>
