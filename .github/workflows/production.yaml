@@ -104,9 +104,7 @@ jobs:
             AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
             AWS_BUCKETNAME=${{ secrets.AWS_BUCKETNAME }}
             AWS_BUCKETNAME_UNSTRUCTURED=true
-            DBNAME=${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG_URL }}-${{ env.GITHUB_REF_SLUG_URL }}.${{ secrets.ROOT_DOMAIN }}
             SERVER_WIDE_MODULES=base,web,${{ env.REQUIRED_MODULES }}
-            DBFILTER=False
           push: true
           cache-from: type=registry,ref=${{ env.GAR_BASE }}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_REF_SLUG }}
           cache-to: type=inline
