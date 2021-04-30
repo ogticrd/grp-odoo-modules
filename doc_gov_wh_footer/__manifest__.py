@@ -11,7 +11,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'stock'],
+    'depends': ['base', 'stock', 'doc_gov_header'],
 
     'data': [
         'views/templates.xml',
