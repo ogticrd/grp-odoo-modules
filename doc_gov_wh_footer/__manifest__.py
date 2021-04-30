@@ -6,7 +6,7 @@
     """,
 
     'author': "Kevin Jiménez, OPTIC",
-    'website': "http://www.yourcompany.com",
+    'website': "https://optic.gob.do",
 
     'category': 'Uncategorized',
     'version': '0.1',
