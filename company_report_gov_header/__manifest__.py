@@ -1,5 +1,5 @@
 {
-    'name': "Document Gov Header",
+    'name': "Company Report Gov Header",
 
     'summary': """
         This module add a header with standard government header style
