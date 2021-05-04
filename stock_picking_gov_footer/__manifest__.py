@@ -1,5 +1,5 @@
 {
-    'name': "Document Gov WH Footer",
+    'name': "Stock Picking Gov Footer",
 
     'summary': """
         This module add a header with standard government footer style with approbals fields
@@ -11,7 +11,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'stock', 'doc_gov_header'],
+    'depends': ['base', 'stock', 'company_report_gov_header'],
 
     'data': [
         'views/templates.xml',
