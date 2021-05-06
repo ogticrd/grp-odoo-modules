@@ -17,7 +17,7 @@
             </xpath>
         </template>
 
-        <template id="l10n_do_gov_stock_deliveryslip_footer" inherit_id="stock.report_deliveryslip">
+        <template id="l10n_do_gov_stock_deliveryslip_footer" inherit_id="stock.report_delivery_document">
             <xpath expr="//div[hasclass('page')]/*[last()]" position="after">
                 <table class="table">
                     <tr>
