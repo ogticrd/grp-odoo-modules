@@ -40,8 +40,16 @@ jobs:
         with:
           repository: odoo/enterprise
           token: ${{ secrets.ACTIONS_PAT }}
-          path: enterprise
-          ref: ${{ env.GITHUB_REF_SLUG }}
+          path: odoo/enterprise
+          ref: ${{ env.GITHUB_BASE_REF_SLUG }}
+
+      - name: Odoo Themes
+        uses: actions/checkout@v2
+        with:
+          repository: opticrd/odoo-website-themes
+          token: ${{ secrets.ACTIONS_PAT }}
+          path: odoo/themes
+          ref: ${{ env.GITHUB_BASE_REF_SLUG }}
 
       - name: Select Odoo modules to install
         id: get_modules
