@@ -18,7 +18,7 @@ RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/wms.git ${ODOO_EXTRA_ADDONS}/oca/wms \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/account-payment.git ${ODOO_EXTRA_ADDONS}/oca/account-payment \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/account-analytic.git ${ODOO_EXTRA_ADDONS}/oca/account-analytic \
-    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/operating-unit.git ${ODOO_EXTRA_ADDONS}/oca/operating-unit \
+    && git clone --depth 1 --branch ${ODOO_VERSION}-mig-stock --single-branch https://github.com/indexa-git/operating-unit.git ${ODOO_EXTRA_ADDONS}/oca/operating-unit \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/product-attribute.git ${ODOO_EXTRA_ADDONS}/oca/product-attribute \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/web.git ${ODOO_EXTRA_ADDONS}/oca/web \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-tools.git ${ODOO_EXTRA_ADDONS}/oca/server-tools \
