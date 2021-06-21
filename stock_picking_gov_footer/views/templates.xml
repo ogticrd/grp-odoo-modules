@@ -1,37 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <template id="l10n_do_gov_stock_picking_footer" inherit_id="stock.report_picking">
-            <xpath expr="//div[hasclass('page')]/*[last()]" position="after">
-                <table class="table">
-                    <tr>
-                        <td>Revisado</td>
-                        <td>Autorizado</td>
-                        <td>Recibido</td>
-                    </tr>
-                    <tr style="padding-top:200px">
-                        <td>.................</td>
-                        <td>.................</td>
-                        <td>.................</td>
-                    </tr>
-                </table>
-            </xpath>
-        </template>
 
-        <template id="l10n_do_gov_stock_deliveryslip_footer" inherit_id="stock.report_delivery_document">
-            <xpath expr="//div[hasclass('page')]/*[last()]" position="after">
-                <table class="table">
-                    <tr>
-                        <td>Revisado</td>
-                        <td>Autorizado</td>
-                        <td>Recibido</td>
-                    </tr>
-                    <tr style="padding-top:200px">
-                        <td>.................</td>
-                        <td>.................</td>
-                        <td>.................</td>
-                    </tr>
-                </table>
-            </xpath>
-        </template>
-    </data>
+    <template id="l10n_do_gov_stock_picking_footer" inherit_id="stock.report_picking">
+        <xpath expr="//div[hasclass('page')]/*[last()]" position="after">
+            <table class="table">
+                <tr>
+                    <td>Revisado</td>
+                    <td>Autorizado</td>
+                    <td>Recibido</td>
+                </tr>
+                <tr style="padding-top:200px">
+                    <td>.................</td>
+                    <td>.................</td>
+                    <td>.................</td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+    <template id="l10n_do_gov_stock_deliveryslip_footer"
+              inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[hasclass('page')]/*[last()]" position="after">
+            <table class="table">
+                <tr>
+                    <td>Revisado</td>
+                    <td>Autorizado</td>
+                    <td>Recibido</td>
+                </tr>
+                <tr style="padding-top:200px">
+                    <td>.................</td>
+                    <td>.................</td>
+                    <td>.................</td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
 </odoo>
