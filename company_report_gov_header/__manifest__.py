@@ -11,7 +11,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base'],
+    'depends': ['base', 'web'],
 
     'data': [
         'views/res_company.xml',

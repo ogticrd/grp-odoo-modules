@@ -1,56 +1,30 @@
 <odoo>
     <data>
-        <template id="doc_gov_standard_header_layout">
-            <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
-                <div class="row">
-                    <div class="col-4">
-                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+
+        <template id="doc_gov_header_boxed_layout" inherit_id="web.external_layout_boxed">
+            <xpath expr="//div[hasclass('o_boxed_header')]" position="replace">
+                <div class="o_boxed_header">
+                    <div class="row">
+                        <div class="col-4">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 80px;" alt="Logo"/>
+                        </div>
+                        <div class="col-4 text-lg-center text-center">
+                            <img t-if="company.l10n_do_gov_header_center_image" t-att-src="image_data_uri(company.l10n_do_gov_header_center_image)" style="max-height: 80px;" alt="Escudo"/>
+                            <p t-field="company.l10n_do_gov_header_center_data"/>
+                        </div>
+                        <div class="col-4 text-lg-right text-right">
+                            <img t-if="company.l10n_do_gov_header_right_image" t-att-src="image_data_uri(company.l10n_do_gov_header_right_image)" style="max-height: 80px;" alt="Programa"/>
+                        </div>
                     </div>
-                    <div class="col-4 text-lg-center text-center">
-                        <img t-if="company.l10n_do_gov_header_center_image" t-att-src="image_data_uri(company.l10n_do_gov_header_center_image)" style="max-height: 45px;" alt="Escudo"/>
-                        <p t-field="company.l10n_do_gov_header_center_data"/>
-                    </div>
-                    <div class="col-4 text-lg-right text-right">
-                        <img t-if="company.l10n_do_gov_header_right_image" t-att-src="image_data_uri(company.l10n_do_gov_header_right_image)" style="max-height: 45px;" alt="Programa"/>
+                    <div class="row mb8">
+                        <div class="col-6" name="company_address">
+                            <div t-field="company.partner_id"
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                            />
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6" name="company_address">
-                        <div t-field="company.partner_id"
-                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
-                        />
-                    </div>
-                </div>
-            </div>
-
-            <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-                <div class="pt-5">
-                    <!-- This div ensures that the address is not cropped by the header. -->
-                    <t t-call="web.address_layout"/>
-                </div>
-                <t t-raw="0"/>
-            </div>
-
-            <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
-                <div class="text-center" style="border-top: 1px solid black;">
-                    <ul class="list-inline mb4">
-                        <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
-                            adding d-inline class fixes the problem-->
-                        <li t-if="company.phone" class="list-inline-item d-inline"><span class="o_force_ltr" t-field="company.phone"/></li>
-                        <li t-if="company.email" class="list-inline-item d-inline"><span t-field="company.email"/></li>
-                        <li t-if="company.website" class="list-inline-item d-inline"><span t-field="company.website"/></li>
-                        <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
-                    </ul>
-
-                    <div name="financial_infos">
-                        <span t-field="company.report_footer"/>
-                    </div>
-
-                    <div t-if="report_type == 'pdf'" class="text-muted">
-                        Page: <span class="page"/> / <span class="topage"/>
-                    </div>
-                </div>
-            </div>
+            </xpath>
         </template>
 
     </data>
