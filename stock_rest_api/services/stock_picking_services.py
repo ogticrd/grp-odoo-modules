@@ -2,7 +2,7 @@ from odoo.addons.base_rest import restapi
 from odoo.addons.base_rest_datamodel.restapi import Datamodel
 from odoo.addons.component.core import Component
 from odoo.exceptions import UserError
-from odoo import osv, _
+from odoo import _
 
 
 class StockPickingService(Component):
