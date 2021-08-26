@@ -9,7 +9,7 @@ ENV ODOO_VERSION ${ODOO_VERSION}
 USER root
 RUN sudo mkdir -p ${ODOO_EXTRA_ADDONS}
 
-RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/odoo-cloud-platform.git ${ODOO_EXTRA_ADDONS}/camptocamp/odoo-cloud-platform \
+RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/camptocamp/odoo-cloud-platform.git ${ODOO_EXTRA_ADDONS}/camptocamp/odoo-cloud-platform \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/partner-contact.git ${ODOO_EXTRA_ADDONS}/oca/partner-contact \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/sale-workflow.git ${ODOO_EXTRA_ADDONS}/oca/sale-workflow \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/purchase-workflow.git ${ODOO_EXTRA_ADDONS}/oca/purchase-workflow \
