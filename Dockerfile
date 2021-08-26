@@ -24,6 +24,7 @@ RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-tools.git ${ODOO_EXTRA_ADDONS}/oca/server-tools \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-env.git ${ODOO_EXTRA_ADDONS}/oca/server-env \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-ux.git ${ODOO_EXTRA_ADDONS}/oca/server-ux \
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-auth.git ${ODOO_EXTRA_ADDONS}/oca/server-auth \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/connector.git ${ODOO_EXTRA_ADDONS}/oca/connector \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/rest-framework.git ${ODOO_EXTRA_ADDONS}/oca/rest-framework \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/l10n-dominicana.git ${ODOO_EXTRA_ADDONS}/indexa/l10n-dominicana \
