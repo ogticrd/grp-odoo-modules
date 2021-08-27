@@ -10,6 +10,7 @@ on:
       - "**/i18n/**"
       - "**.py"
       - "**.xml"
+      - "Dockerfile"
 
 env:
   REQUIRED_MODULES: cloud_platform_exoscale # list of addional addons to install separated by comma
