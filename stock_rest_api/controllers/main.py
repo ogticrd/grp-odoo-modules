@@ -10,4 +10,4 @@ class StockRestPublicApiController(main.RestController):
 class StockRestPrivateApiController(main.RestController):
     _root_path = "/stock_rest_api/private/"
     _collection_name = "stock.rest.api.private.services"
-    _default_auth = "user"
+    _default_auth = "api_key"
