@@ -36,6 +36,16 @@ class StockPickingService(Component):
         res = self._get(_id)
         return self._to_json(res.move_ids_without_package)
 
+    @restapi.method(
+        [(["/<int:id>/details"], "GET")],
+    )
+    def details(self, _id):
+        """
+        Get stock picking detailed operations information
+        """
+        res = self._get(_id)
+        return self._to_json(res.move_line_ids_without_package)
+
     def _get(self, _id):
         return self._get_model().browse(_id)
 
@@ -240,6 +250,37 @@ class StockPickingService(Component):
             return self._to_json(stock_move_id)
         return {"response": "No stock move found with id %s" % values.id}
 
+    @restapi.method(
+        [(["/detail_do_quantity"], "POST")],
+        input_param=Datamodel("stock.update.param"),
+    )
+    def details_do_qty(self, values):
+        """
+        Adds picking detailed operation
+
+        ex:
+        "id": 51,
+        "values": {
+            "product_id": "Customizable Desk",
+            "location_id": "WH/Stock",
+            "lot_id": "12987589789412",
+            "qty_done": 50,
+        }
+        """
+        picking_id = self.env["stock.picking"].browse(values.id)
+        values = self._prepare_create_vals(values.values)
+        values["product_uom_id"] = (
+            self.env["product.product"].browse(values["product_id"]).uom_id.id
+        )
+        if picking_id:
+            values["location_dest_id"] = picking_id.location_dest_id.id
+            if "location_id" not in values:
+                values["location_id"] = picking_id.location_id.id
+            picking_id.move_line_ids_without_package = [(0, 0, values)]
+            picking_id.button_validate()
+            return self._to_json(picking_id.move_line_ids_without_package)
+        return {"response": "No picking found with id %s" % values.id}
+
     def _to_json(self, stock_picking_id):
         return stock_picking_id.read()
 
@@ -307,4 +348,6 @@ class StockPickingService(Component):
             "product_id": "product.product",
             "move_ids_without_package": "stock.move",
             "product_uom": "uom.uom",
+            "lot_id": "stock.production.lot",
+            "move_line_ids_without_package": "stock.move.line",
         }
