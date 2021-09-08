@@ -36,6 +36,16 @@ class StockPickingService(Component):
         res = self._get(_id)
         return self._to_json(res.move_ids_without_package)
 
+    @restapi.method(
+        [(["/<int:id>/details"], "GET")],
+    )
+    def details(self, _id):
+        """
+        Get stock picking detailed operations information
+        """
+        res = self._get(_id)
+        return self._to_json(res.move_line_ids_without_package)
+
     def _get(self, _id):
         return self._get_model().browse(_id)
 
