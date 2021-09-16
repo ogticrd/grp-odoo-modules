@@ -10,4 +10,4 @@ class ProductRestPublicApiController(main.RestController):
 class ProductRestPrivateApiController(main.RestController):
     _root_path = "/product_rest_api/private/"
     _collection_name = "product.rest.api.private.services"
-    _default_auth = "user"
+    _default_auth = "api_key"
