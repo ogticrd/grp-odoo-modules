@@ -2,6 +2,8 @@
     "name": "Purchase Order Lines Import",
     "summary": """
         Purchase Order Lines Import Module
+        
+        (Government Transactional Purchase Portal Integration)
         """,
     "author": "José López, OPTIC",
     "website": "https://optic.gob.do",
