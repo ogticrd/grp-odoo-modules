@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="button_confirm_group" model="res.groups">
+        <field name="name">Can confirm Purchase Order</field>
+    </record>
+
+</odoo>
