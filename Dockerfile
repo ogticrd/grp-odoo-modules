@@ -1,5 +1,5 @@
 ARG IMAGE_LOCATION=gcr.io/iterativo/dockerdoo
-ARG ODOO_VERSION=14.0
+ARG ODOO_VERSION=15.0
 FROM ${IMAGE_LOCATION}:${ODOO_VERSION}
 
 ARG ODOO_VERSION
@@ -41,7 +41,7 @@ RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade anthem
 
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
-RUN if [ "${ODOO_VERSION}" = "14.0" ]; then \
+RUN if [ "${ODOO_VERSION}" = "15.0" ]; then \
     cd /opt/odoo && \
     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/64772.patch | git apply - && \
     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \

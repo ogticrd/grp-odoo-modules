@@ -6,7 +6,7 @@
     "author": "José López, OPTIC",
     "website": "https://optic.gob.do",
     "category": "Stock",
-    "version": "14.0.0.1.0",
+    "version": "15.0.0.1.0",
     "depends": ["stock"],
     "data": [
         "report/report_stockpicking_operations.xml",
