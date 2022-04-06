@@ -18,7 +18,7 @@ RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/wms.git ${ODOO_EXTRA_ADDONS}/oca/wms \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/account-payment.git ${ODOO_EXTRA_ADDONS}/oca/account-payment \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/account-analytic.git ${ODOO_EXTRA_ADDONS}/oca/account-analytic \
-    && git clone --depth 1 --branch ${ODOO_VERSION}-mig-stock --single-branch https://github.com/indexa-git/operating-unit.git ${ODOO_EXTRA_ADDONS}/oca/operating-unit \
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/operating-unit.git ${ODOO_EXTRA_ADDONS}/oca/operating-unit \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/product-attribute.git ${ODOO_EXTRA_ADDONS}/oca/product-attribute \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/web.git ${ODOO_EXTRA_ADDONS}/oca/web \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-tools.git ${ODOO_EXTRA_ADDONS}/oca/server-tools \
@@ -27,8 +27,8 @@ RUN git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-auth.git ${ODOO_EXTRA_ADDONS}/oca/server-auth \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/connector.git ${ODOO_EXTRA_ADDONS}/oca/connector \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/rest-framework.git ${ODOO_EXTRA_ADDONS}/oca/rest-framework \
-    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/l10n-dominicana.git ${ODOO_EXTRA_ADDONS}/indexa/l10n-dominicana \
-    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/external-service-addons.git ${ODOO_EXTRA_ADDONS}/indexa/external-service-addons
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/l10n-dominicana.git ${ODOO_EXTRA_ADDONS}/indexa/l10n-dominicana
+    # && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/external-service-addons.git ${ODOO_EXTRA_ADDONS}/indexa/external-service-addons
 
 COPY . ${ODOO_EXTRA_ADDONS}
 
