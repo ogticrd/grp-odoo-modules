@@ -41,12 +41,12 @@ RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade anthem
 
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
-RUN if [ "${ODOO_VERSION}" = "15.0" ]; then \
-    cd /opt/odoo && \
-    curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/64772.patch | git apply - && \
-    curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \
-    git status; \
-    fi
+# TODO we need to finish up this PR for acceptance into Odoo's core
+# RUN if [ "${ODOO_VERSION}" = "15.0" ]; then \
+#     cd /opt/odoo && \
+#     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \
+#     git status; \
+#     fi
 
 # Odoo Configuration file variables
 ARG ADMIN_PASSWORD
