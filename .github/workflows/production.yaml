@@ -99,7 +99,7 @@ jobs:
             EXTRA_MODULES=${{ steps.get_modules.outputs.modules }},${{ env.REQUIRED_MODULES }}
             IMAGE_LOCATION=${{ env.IMAGE_LOCATION }}
             ODOO_VERSION=${{ env.GITHUB_REF_SLUG }}
-            PGHOST=${{ secrets.DB_PORT_5432_TCP_ADDR }}
+            PGHOST=${{ secrets.DB_PORT_5432_TCP_ADDR_15 }}
             PGUSER=${{ secrets.DB_ENV_POSTGRES_USER }}
             PGPORT=${{ secrets.DB_PORT_5432_TCP_PORT }}
             PGPASSWORD=${{ secrets.DB_ENV_POSTGRES_PASSWORD }}
