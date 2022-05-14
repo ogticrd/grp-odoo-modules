@@ -20,23 +20,24 @@ Description pending
     'author': 'Gustavo Valverde',
     'website': 'http://ogtic.gob.do',
     'depends': ['account',
+                'purchase',
                 'base_iban',
                 'l10n_do',
                 ],
     'data': [
         # Basic accounting data
-        'data/l10n_do_chart_data.xml',
+        'data/l10n_do_gov_chart_data.xml',
         'data/account.group.template.csv',
         'data/account.account.template.csv',
         'data/account_chart_template_data.xml',
-        'data/l10n_do_res_partner_title.xml',
+        # configuration wizard, views, reports...
+        'data/account_chart_template_configure_data.xml',
         # Extra master data
         'data/masters/product.category.csv',
         'data/masters/product.product.csv',
         'data/masters/account.analytic.group.csv',
         'data/masters/account.analytic.account.csv',
-        # configuration wizard, views, reports...
-        'data/account_chart_template_configure_data.xml',
+
     ],
     'demo': [
         # 'demo/demo_company.xml',
