@@ -13,7 +13,7 @@
         <field name="property_account_payable_id" ref="gov_central_2101010001"/>
         <field name="property_account_income_categ_id" ref="gov_central_41020200020003"/>
         <field name="property_account_expense_categ_id" ref="gov_central_5105010001"/>
-        <field name="property_stock_account_input_categ_id" ref="l10n_do.do_niif_21021200"/>
+        <!-- <field name="property_stock_account_input_categ_id" ref="l10n_do.do_niif_21021200"/> -->
         <field name="property_stock_account_output_categ_id" ref="gov_central_110603"/>
         <field name="property_stock_valuation_account_id" ref="gov_central_110602"/>
         <field name="expense_currency_exchange_account_id" ref="gov_central_510301"/>

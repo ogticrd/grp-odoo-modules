@@ -22,7 +22,7 @@ Description pending
     'depends': ['account',
                 'purchase',
                 'base_iban',
-                'l10n_do',
+                'product_analytic',
                 ],
     'data': [
         # Basic accounting data
@@ -33,10 +33,10 @@ Description pending
         # configuration wizard, views, reports...
         'data/account_chart_template_configure_data.xml',
         # Extra master data
-        'data/masters/product.category.csv',
-        'data/masters/product.product.csv',
         'data/masters/account.analytic.group.csv',
         'data/masters/account.analytic.account.csv',
+        'data/masters/product.category.csv',
+        'data/masters/product.product.csv',
 
     ],
     'demo': [
