@@ -1,0 +1,175 @@
+id,name,code,group_id/id
+gov_account_analytic_account_2.6.7.7.01,Especies menores y de zoológico,2.6.7.7.01,gov_account_analytic_group_2.6.7.7
+gov_account_analytic_account_2.6.7.6.01,Equinos,2.6.7.6.01,gov_account_analytic_group_2.6.7.6
+gov_account_analytic_account_2.6.7.4.01,Ovinos y caprinos,2.6.7.4.01,gov_account_analytic_group_2.6.7.4
+gov_account_analytic_account_2.6.7.2.01,Porcinos,2.6.7.2.01,gov_account_analytic_group_2.6.7.2
+gov_account_analytic_account_2.6.7.1.01,Bovinos,2.6.7.1.01,gov_account_analytic_group_2.6.7.1
+gov_account_analytic_account_2.6.7.3.01,Aves,2.6.7.3.01,gov_account_analytic_group_2.6.7.3
+gov_account_analytic_account_2.6.7.5.01,Peces y acuicultura,2.6.7.5.01,gov_account_analytic_group_2.6.7.5
+gov_account_analytic_account_2.3.9.7.01,Productos y útiles veterinarios,2.3.9.7.01,gov_account_analytic_group_2.3.9.7
+gov_account_analytic_account_2.3.4.2.01,Productos medicinales para uso veterinario,2.3.4.2.01,gov_account_analytic_group_2.3.4.2
+gov_account_analytic_account_2.3.1.2.01,Alimentos para animales,2.3.1.2.01,gov_account_analytic_group_2.3.1.2
+gov_account_analytic_account_2.6.9.2.01,Edificios no residenciales,2.6.9.2.01,gov_account_analytic_group_2.6.9.2
+gov_account_analytic_account_2.3.1.4.01,"Madera, corcho y sus manufacturas",2.3.1.4.01,gov_account_analytic_group_2.3.1.4
+gov_account_analytic_account_2.3.9.9.01,Productos y Utiles Varios  n.i.p,2.3.9.9.01,gov_account_analytic_group_2.3.9.9
+gov_account_analytic_account_2.6.7.9.01,"Semillas, cultivos, plantas y árboles  que generan productos  recurrentes",2.6.7.9.01,gov_account_analytic_group_2.6.7.9
+gov_account_analytic_account_2.3.1.3.02,Productos agrícolas,2.3.1.3.02,gov_account_analytic_group_2.3.1.3
+gov_account_analytic_account_2.3.1.3.03,Productos forestales,2.3.1.3.03,gov_account_analytic_group_2.3.1.3
+gov_account_analytic_account_2.2.9.1.01,Otras contrataciones de servicios,2.2.9.1.01,gov_account_analytic_group_2.2.9.1
+gov_account_analytic_account_2.3.7.2.04,Abonos y fertilizantes,2.3.7.2.04,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.3.7.2.05,"Insecticidas, fumigantes y otros",2.3.7.2.05,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.3.6.4.01,Minerales metalíferos,2.3.6.4.01,gov_account_analytic_group_2.3.6.4
+gov_account_analytic_account_2.3.6.4.07,Otros minerales,2.3.6.4.07,gov_account_analytic_group_2.3.6.4
+gov_account_analytic_account_2.3.6.1.04,Productos de yeso,2.3.6.1.04,gov_account_analytic_group_2.3.6.1
+gov_account_analytic_account_2.3.6.4.03,Carbón mineral,2.3.6.4.03,gov_account_analytic_group_2.3.6.4
+gov_account_analytic_account_2.3.6.3.07,Otros productos metálicos,2.3.6.3.07,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.3.6.3.02,Productos no ferrosos,2.3.6.3.02,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.3.6.3.01,Productos ferrosos,2.3.6.3.01,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.6.9.5.01,Metales y piedras preciosas,2.6.9.5.01,gov_account_analytic_group_2.6.9.5
+gov_account_analytic_account_2.2.7.1.03,"Limpieza, desmalezamiento de tierras y terrenos",2.2.7.1.03,gov_account_analytic_group_2.2.7.1
+gov_account_analytic_account_2.3.6.4.04,"Piedra, arcilla y arena",2.3.6.4.04,gov_account_analytic_group_2.3.6.4
+gov_account_analytic_account_2.3.1.3.01,Productos pecuarios,2.3.1.3.01,gov_account_analytic_group_2.3.1.3
+gov_account_analytic_account_2.3.5.1.01,Cuero y pieles,2.3.5.1.01,gov_account_analytic_group_2.3.5.1
+gov_account_analytic_account_2.3.2.1.01,"Hilados, fibras, telas y útiles de costura",2.3.2.1.01,gov_account_analytic_group_2.3.2.1
+gov_account_analytic_account_2.3.7.2.01,Productos explosivos y pirotecnia,2.3.7.2.01,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.3.7.2.99,Otros productos químicos y conexos,2.3.7.2.99,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.3.9.8.01,Repuestos,2.3.9.8.01,gov_account_analytic_group_2.3.9.8
+gov_account_analytic_account_2.6.5.2.01,Maquinaria y equipo industrial,2.6.5.2.01,gov_account_analytic_group_2.6.5.2
+gov_account_analytic_account_2.3.4.1.01,Productos medicinales para uso humano,2.3.4.1.01,gov_account_analytic_group_2.3.4.1
+gov_account_analytic_account_2.3.7.2.03,Productos químicos de uso personal y de laboratorios,2.3.7.2.03,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.3.1.1.01,Alimentos y bebidas para personas,2.3.1.1.01,gov_account_analytic_group_2.3.1.1
+gov_account_analytic_account_2.3.7.2.06,"Pinturas, lacas, barnices, diluyentes y absorbentes para pinturas",2.3.7.2.06,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.3.7.1.05,Aceites y grasas,2.3.7.1.05,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.5.4.01,Artículos de caucho,2.3.5.4.01,gov_account_analytic_group_2.3.5.4
+gov_account_analytic_account_2.3.5.5.01,Plástico,2.3.5.5.01,gov_account_analytic_group_2.3.5.5
+gov_account_analytic_account_2.3.3.1.01,Papel de escritorio,2.3.3.1.01,gov_account_analytic_group_2.3.3.1
+gov_account_analytic_account_2.3.3.2.01,Papel y cartón,2.3.3.2.01,gov_account_analytic_group_2.3.3.2
+gov_account_analytic_account_2.3.9.2.01,"Útiles  y materiales de escritorio, oficina e informática",2.3.9.2.01,gov_account_analytic_group_2.3.9.2
+gov_account_analytic_account_2.3.3.3.01,Productos de artes gráficas,2.3.3.3.01,gov_account_analytic_group_2.3.3.3
+gov_account_analytic_account_2.3.9.9.02,Bonos para útiles diversos,2.3.9.9.02,gov_account_analytic_group_2.3.9.9
+gov_account_analytic_account_2.3.6.1.05,Productos de arcilla y derivados,2.3.6.1.05,gov_account_analytic_group_2.3.6.1
+gov_account_analytic_account_2.3.7.1.03,Keroseno,2.3.7.1.03,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.7.1.99,Otros combustibles,2.3.7.1.99,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.7.1.01,Gasolina,2.3.7.1.01,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.6.4.02,Petróleo crudo,2.3.6.4.02,gov_account_analytic_group_2.3.6.4
+gov_account_analytic_account_2.3.7.1.02,Gasoil,2.3.7.1.02,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.7.1.04,Gas GLP,2.3.7.1.04,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.7.1.06,Lubricantes,2.3.7.1.06,gov_account_analytic_group_2.3.7.1
+gov_account_analytic_account_2.3.6.3.03,Estructuras metálicas acabadas,2.3.6.3.03,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.6.5.3.01,Maquinaria y equipo de construcción,2.6.5.3.01,gov_account_analytic_group_2.6.5.3
+gov_account_analytic_account_2.6.5.7.01,Máquinas-herramientas,2.6.5.7.01,gov_account_analytic_group_2.6.5.7
+gov_account_analytic_account_2.6.4.7.01,Equipo de elevación,2.6.4.7.01,gov_account_analytic_group_2.6.4.7
+gov_account_analytic_account_2.2.4.1.01,Pasajes y gastos de transporte,2.2.4.1.01,gov_account_analytic_group_2.2.4.1
+gov_account_analytic_account_2.6.4.6.01,Equipo de tracción,2.6.4.6.01,gov_account_analytic_group_2.6.4.6
+gov_account_analytic_account_2.6.5.2.02,Maquinaria y equipos para el tratamiento y suministro de agua,2.6.5.2.02,gov_account_analytic_group_2.6.5.2
+gov_account_analytic_account_2.6.5.8.01,Otros equipos,2.6.5.8.01,gov_account_analytic_group_2.6.5.8
+gov_account_analytic_account_2.3.9.8.02,Accesorios,2.3.9.8.02,gov_account_analytic_group_2.3.9.8
+gov_account_analytic_account_2.6.3.4.01,Equipos e instrumentos de medición científica,2.6.3.4.01,gov_account_analytic_group_2.6.3.4
+gov_account_analytic_account_2.3.9.9.04,Productos y útiles de defensa y seguridad,2.3.9.9.04,gov_account_analytic_group_2.3.9.9
+gov_account_analytic_account_2.2.8.7.06,Otros servicios técnicos profesionales,2.2.8.7.06,gov_account_analytic_group_2.2.8.7
+gov_account_analytic_account_2.3.6.3.06,Productos metálicos,2.3.6.3.06,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.3.6.3.04,Herramientas menores,2.3.6.3.04,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.6.9.9.01,Otras estructuras y objetos de valor,2.6.9.9.01,gov_account_analytic_group_2.6.9.9
+gov_account_analytic_account_2.6.5.6.01,Equipo de generación eléctrica y a fines,2.6.5.6.01,gov_account_analytic_group_2.6.5.6
+gov_account_analytic_account_2.6.1.3.01,Equipos de tecnología de la información y comunicación,2.6.1.3.01,gov_account_analytic_group_2.6.1.3
+gov_account_analytic_account_2.6.4.5.01,Embarcaciones,2.6.4.5.01,gov_account_analytic_group_2.6.4.5
+gov_account_analytic_account_2.3.6.1.01,Productos de cemento,2.3.6.1.01,gov_account_analytic_group_2.3.6.1
+gov_account_analytic_account_2.6.5.1.01,Maquinaria y equipo agropecuario,2.6.5.1.01,gov_account_analytic_group_2.6.5.1
+gov_account_analytic_account_2.6.4.2.01,Carrocerías y remolques,2.6.4.2.01,gov_account_analytic_group_2.6.4.2
+gov_account_analytic_account_2.6.1.1.01,"Muebles, equipos de oficina y estantería",2.6.1.1.01,gov_account_analytic_group_2.6.1.1
+gov_account_analytic_account_2.3.6.4.06,Productos abrasivos,2.3.6.4.06,gov_account_analytic_group_2.3.6.4
+gov_account_analytic_account_2.3.5.2.01,Artículos de cuero,2.3.5.2.01,gov_account_analytic_group_2.3.5.2
+gov_account_analytic_account_2.6.3.2.01,Instrumental médico y de laboratorio,2.6.3.2.01,gov_account_analytic_group_2.6.3.2
+gov_account_analytic_account_2.2.8.7.01,Servicios técnicos y profesionales,2.2.8.7.01,gov_account_analytic_group_2.2.8.7
+gov_account_analytic_account_2.6.4.4.01,Equipo ferroviario,2.6.4.4.01,gov_account_analytic_group_2.6.4.4
+gov_account_analytic_account_2.6.4.1.01,Automóviles y camiones,2.6.4.1.01,gov_account_analytic_group_2.6.4.1
+gov_account_analytic_account_2.3.6.9.01,Otros productos no metálicos,2.3.6.9.01,gov_account_analytic_group_2.3.6.9
+gov_account_analytic_account_2.3.6.3.05,Productos de hojalata,2.3.6.3.05,gov_account_analytic_group_2.3.6.3
+gov_account_analytic_account_2.3.6.2.01,Productos de vidrio,2.3.6.2.01,gov_account_analytic_group_2.3.6.2
+gov_account_analytic_account_2.6.5.4.01,Sistemas y equipos de climatización,2.6.5.4.01,gov_account_analytic_group_2.6.5.4
+gov_account_analytic_account_2.6.4.8.01,Otros equipos de transporte,2.6.4.8.01,gov_account_analytic_group_2.6.4.8
+gov_account_analytic_account_2.6.6.1.01,Equipos de defensa,2.6.6.1.01,gov_account_analytic_group_2.6.6.1
+gov_account_analytic_account_2.6.6.2.01,Equipos de seguridad,2.6.6.2.01,gov_account_analytic_group_2.6.6.2
+gov_account_analytic_account_2.6.4.3.01,Equipo aeronáutico,2.6.4.3.01,gov_account_analytic_group_2.6.4.3
+gov_account_analytic_account_2.6.5.5.01,"Equipo de comunicación, telecomunicaciones y señalamiento",2.6.5.5.01,gov_account_analytic_group_2.6.5.5
+gov_account_analytic_account_2.3.5.3.01,Llantas y neumáticos,2.3.5.3.01,gov_account_analytic_group_2.3.5.3
+gov_account_analytic_account_2.3.9.6.01,Productos eléctricos y afines,2.3.9.6.01,gov_account_analytic_group_2.3.9.6
+gov_account_analytic_account_2.6.8.3.01,Programas de informática,2.6.8.3.01,gov_account_analytic_group_2.6.8.3
+gov_account_analytic_account_2.7.2.2.01,Obras de energía,2.7.2.2.01,gov_account_analytic_group_2.7.2.2
+gov_account_analytic_account_2.6.3.1.01,Equipo médico y de laboratorio,2.6.3.1.01,gov_account_analytic_group_2.6.3.1
+gov_account_analytic_account_2.3.6.1.03,Productos de asbestos,2.3.6.1.03,gov_account_analytic_group_2.3.6.1
+gov_account_analytic_account_2.7.2.4.01,Infraestructura terrestre y obras anexas,2.7.2.4.01,gov_account_analytic_group_2.7.2.4
+gov_account_analytic_account_2.3.6.1.02,Productos de cal,2.3.6.1.02,gov_account_analytic_group_2.3.6.1
+gov_account_analytic_account_2.7.1.3.01,Obras para edificación de otras estructuras,2.7.1.3.01,gov_account_analytic_group_2.7.1.3
+gov_account_analytic_account_2.3.2.2.01,Acabados textiles,2.3.2.2.01,gov_account_analytic_group_2.3.2.2
+gov_account_analytic_account_2.6.9.6.01,Accesorios para edificaciones residenciales y no residenciales,2.6.9.6.01,gov_account_analytic_group_2.6.9.6
+gov_account_analytic_account_2.3.6.2.02,Productos de loza,2.3.6.2.02,gov_account_analytic_group_2.3.6.2
+gov_account_analytic_account_2.6.9.1.01,Edificios residenciales (viviendas),2.6.9.1.01,gov_account_analytic_group_2.6.9.1
+gov_account_analytic_account_2.7.2.7.01,Obras urbanísticas,2.7.2.7.01,gov_account_analytic_group_2.7.2.7
+gov_account_analytic_account_2.7.2.5.01,Infraestructura marítima y aérea,2.7.2.5.01,gov_account_analytic_group_2.7.2.5
+gov_account_analytic_account_2.7.2.1.01,Obras hidraúlicas y sanitarias,2.7.2.1.01,gov_account_analytic_group_2.7.2.1
+gov_account_analytic_account_2.7.2.3.01,Obras de telecomunicaciones,2.7.2.3.01,gov_account_analytic_group_2.7.2.3
+gov_account_analytic_account_2.7.2.9.01,"Obras en plantas industriales, hidrocarburos y minas",2.7.2.9.01,gov_account_analytic_group_2.7.2.9
+gov_account_analytic_account_2.7.2.6.01,Infraestructura y plantaciones agrícolas,2.7.2.6.01,gov_account_analytic_group_2.7.2.6
+gov_account_analytic_account_2.2.7.1.06,Mantenimiento y reparación de instalaciones eléctricas,2.2.7.1.06,gov_account_analytic_group_2.2.7.1
+gov_account_analytic_account_2.6.3.3.01,Equipo veterinario,2.6.3.3.01,gov_account_analytic_group_2.6.3.3
+gov_account_analytic_account_2.6.1.9.01,Otros Mobiliarios y Equipos no Identificados Precedentemente,2.6.1.9.01,gov_account_analytic_group_2.6.1.9
+gov_account_analytic_account_2.3.9.1.01,Útiles y materiales de limpieza e higiene,2.3.9.1.01,gov_account_analytic_group_2.3.9.1
+gov_account_analytic_account_2.3.9.3.01,"Útiles menores médico, quirúrgicos o de laboratorio",2.3.9.3.01,gov_account_analytic_group_2.3.9.3
+gov_account_analytic_account_2.3.9.2.02,Útiles y materiales  escolares y de enseñanzas,2.3.9.2.02,gov_account_analytic_group_2.3.9.2
+gov_account_analytic_account_2.6.2.1.01,Equipos y Aparatos Audiovisuales,2.6.2.1.01,gov_account_analytic_group_2.6.2.1
+gov_account_analytic_account_2.3.2.3.01,Prendas y accesorios de vestir,2.3.2.3.01,gov_account_analytic_group_2.3.2.3
+gov_account_analytic_account_2.3.2.4.01,Calzados,2.3.2.4.01,gov_account_analytic_group_2.3.2.4
+gov_account_analytic_account_2.3.3.4.01,"Libros, revistas y periódicos",2.3.3.4.01,gov_account_analytic_group_2.3.3.4
+gov_account_analytic_account_2.6.2.3.01,Cámaras fotográficas y de video,2.6.2.3.01,gov_account_analytic_group_2.6.2.3
+gov_account_analytic_account_2.2.7.2.08,"Servicios de mantenimiento, reparación, desmonte e instalación",2.2.7.2.08,gov_account_analytic_group_2.2.7.2
+gov_account_analytic_account_2.3.7.2.07,Productos químicos para saneamiento de las aguas,2.3.7.2.07,gov_account_analytic_group_2.3.7.2
+gov_account_analytic_account_2.6.1.4.01,Electrodomésticos,2.6.1.4.01,gov_account_analytic_group_2.6.1.4
+gov_account_analytic_account_2.3.9.5.01,Útiles de cocina y comedor,2.3.9.5.01,gov_account_analytic_group_2.3.9.5
+gov_account_analytic_account_2.6.1.2.01,Muebles de alojamiento,2.6.1.2.01,gov_account_analytic_group_2.6.1.2
+gov_account_analytic_account_2.6.2.4.01,Mobiliario y equipo educacional y recreativo,2.6.2.4.01,gov_account_analytic_group_2.6.2.4
+gov_account_analytic_account_2.6.9.5.02,"Antigüedades, bienes artísticos y otros objetos de arte",2.6.9.5.02,gov_account_analytic_group_2.6.9.5
+gov_account_analytic_account_2.3.3.5.01,Textos de enseñanza,2.3.3.5.01,gov_account_analytic_group_2.3.3.5
+gov_account_analytic_account_2.3.9.4.01,"Útiles destinados a actividades deportivas, culturales y recreativas",2.3.9.4.01,gov_account_analytic_group_2.3.9.4
+gov_account_analytic_account_2.6.9.5.03,Objetos del patrimonio cultural,2.6.9.5.03,gov_account_analytic_group_2.6.9.5
+gov_account_analytic_account_2.6.8.1.01,Investigación y desarrollo,2.6.8.1.01,gov_account_analytic_group_2.6.8.1
+gov_account_analytic_account_2.2.8.6.01,Eventos generales,2.2.8.6.01,gov_account_analytic_group_2.2.8.6
+gov_account_analytic_account_2.2.7.1.02,Mantenimientos y reparaciones especiales,2.2.7.1.02,gov_account_analytic_group_2.2.7.1
+gov_account_analytic_account_2.2.8.5.01,Fumigación,2.2.8.5.01,gov_account_analytic_group_2.2.8.5
+gov_account_analytic_account_2.6.7.8.01,Otros activos biológicos que generan producción recurrente,2.6.7.8.01,gov_account_analytic_group_2.6.7.8
+gov_account_analytic_account_2.2.8.3.01,Servicios sanitarios médicos y veterinarios,2.2.8.3.01,gov_account_analytic_group_2.2.8.3
+gov_account_analytic_account_2.2.8.5.03,Limpieza e higiene,2.2.8.5.03,gov_account_analytic_group_2.2.8.5
+gov_account_analytic_account_2.2.8.7.03,Servicios de contabilidad y auditoría,2.2.8.7.03,gov_account_analytic_group_2.2.8.7
+gov_account_analytic_account_2.2.7.2.06,"Mantenimiento y reparación de equipos de transporte, tracción y elevación",2.2.7.2.06,gov_account_analytic_group_2.2.7.2
+gov_account_analytic_account_2.2.7.1.01,Reparaciones y mantenimientos menores en edificaciones,2.2.7.1.01,gov_account_analytic_group_2.2.7.1
+gov_account_analytic_account_2.2.7.1.04,Mantenimiento y reparación de obras de ingeniería civil o infraestructura,2.2.7.1.04,gov_account_analytic_group_2.2.7.1
+gov_account_analytic_account_2.2.7.1.07,"Mantenimiento, reparación, servicios de pintura y sus derivados",2.2.7.1.07,gov_account_analytic_group_2.2.7.1
+gov_account_analytic_account_2.7.1.1.01,Obras para edificación residencial (viviendas),2.7.1.1.01,gov_account_analytic_group_2.7.1.1
+gov_account_analytic_account_2.2.2.2.01,"Impresión, encuadernación y rotulación",2.2.2.2.01,gov_account_analytic_group_2.2.2.2
+gov_account_analytic_account_2.2.1.8.01,Recolección de residuos,2.2.1.8.01,gov_account_analytic_group_2.2.1.8
+gov_account_analytic_account_2.2.4.2.01,Fletes,2.2.4.2.01,gov_account_analytic_group_2.2.4.2
+gov_account_analytic_account_2.2.1.4.01,Telefax y correos,2.2.1.4.01,gov_account_analytic_group_2.2.1.4
+gov_account_analytic_account_2.2.5.4.01,"Alquileres de equipos de transporte, tracción y elevación",2.2.5.4.01,gov_account_analytic_group_2.2.5.4
+gov_account_analytic_account_2.2.4.3.02,Servicios de manejo y embalaje,2.2.4.3.02,gov_account_analytic_group_2.2.4.3
+gov_account_analytic_account_2.2.4.3.01,Almacenaje,2.2.4.3.01,gov_account_analytic_group_2.2.4.3
+gov_account_analytic_account_2.2.8.7.05,Servicios de informática y sistemas computarizados,2.2.8.7.05,gov_account_analytic_group_2.2.8.7
+gov_account_analytic_account_2.2.8.7.04,Servicios de capacitación,2.2.8.7.04,gov_account_analytic_group_2.2.8.7
+gov_account_analytic_account_2.2.8.7.02,Servicios jurídicos,2.2.8.7.02,gov_account_analytic_group_2.2.8.7
+gov_account_analytic_account_2.2.5.1.01,Alquileres y rentas de edificaciones y locales,2.2.5.1.01,gov_account_analytic_group_2.2.5.1
+gov_account_analytic_account_2.2.5.5.01,Alquiler de tierras,2.2.5.5.01,gov_account_analytic_group_2.2.5.5
+gov_account_analytic_account_2.2.7.2.02,Mantenimiento y reparación de equipos tecnología e información,2.2.7.2.02,gov_account_analytic_group_2.2.7.2
+gov_account_analytic_account_2.2.1.5.01,Servicio de internet y televisión por cable,2.2.1.5.01,gov_account_analytic_group_2.2.1.5
+gov_account_analytic_account_2.2.2.1.01,Publicidad y propaganda,2.2.2.1.01,gov_account_analytic_group_2.2.2.1
+gov_account_analytic_account_2.2.8.6.04,Actuaciones artísticas,2.2.8.6.04,gov_account_analytic_group_2.2.8.6
+gov_account_analytic_account_2.2.1.7.01,Agua,2.2.1.7.01,gov_account_analytic_group_2.2.1.7
+gov_account_analytic_account_2.2.1.6.01,Energía eléctrica,2.2.1.6.01,gov_account_analytic_group_2.2.1.6
+gov_account_analytic_account_2.2.8.4.01,Servicios funerarios y gastos conexos,2.2.8.4.01,gov_account_analytic_group_2.2.8.4
+gov_account_analytic_account_2.2.1.3.01,Teléfono local,2.2.1.3.01,gov_account_analytic_group_2.2.1.3
+gov_account_analytic_account_2.2.1.2.01,Servicios telefónico de larga distancia,2.2.1.2.01,gov_account_analytic_group_2.2.1.2
+gov_account_analytic_account_2.2.1.1.01,Radiocomunicación,2.2.1.1.01,gov_account_analytic_group_2.2.1.1
+gov_account_analytic_account_2.4.1.4.02,Becas extranjeras,2.4.1.4.02,gov_account_analytic_group_2.4.1.4
+gov_account_analytic_account_2.2.9.2.01,Servicios de alimentación,2.2.9.2.01,gov_account_analytic_group_2.2.9.2
+gov_account_analytic_account_2.2.8.6.02,Festividades,2.2.8.6.02,gov_account_analytic_group_2.2.8.6
+gov_account_analytic_account_2.2.5.8.01,Otros alquileres y arrendamientos por derechos de usos,2.2.5.8.01,gov_account_analytic_group_2.2.5.8
+gov_account_analytic_account_2.3.3.6.01,Especies timbrados y valoradas,2.3.3.6.01,gov_account_analytic_group_2.3.3.6
+gov_account_analytic_account_2.2.8.8.01,Impuestos,2.2.8.8.01,gov_account_analytic_group_2.2.8.8
