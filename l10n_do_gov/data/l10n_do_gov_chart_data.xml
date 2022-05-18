@@ -5,7 +5,6 @@
     <record id="gov_central_chart_template" model="account.chart.template">
         <field name="name">Catálogo de Gobierno Central</field>
         <field name="complete_tax_set" eval="True"/>
-        <field name="code_digits">18</field>
         <field name="cash_account_code_prefix">110101</field>
         <field name="bank_account_code_prefix">110102</field>
         <field name="transfer_account_code_prefix">1101010001</field>
