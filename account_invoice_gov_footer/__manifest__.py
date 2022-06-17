@@ -6,7 +6,7 @@
     "author": "José López, OPTIC",
     "website": "https://optic.gob.do",
     "category": "Uncategorized",
-    "version": "14.0.0.1.0",
+    "version": "15.0.0.1.0",
     "depends": ["account", "company_report_gov_header"],
     "data": [
         "views/report_invoice.xml",

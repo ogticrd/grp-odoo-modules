@@ -1,5 +1,5 @@
 ARG IMAGE_LOCATION=gcr.io/iterativo/dockerdoo
-ARG ODOO_VERSION=14.0
+ARG ODOO_VERSION=15.0
 FROM ${IMAGE_LOCATION}:${ODOO_VERSION}
 
 ARG ODOO_VERSION
@@ -19,7 +19,7 @@ RUN git clone --depth 1 --branch master --single-branch https://github.com/campt
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/wms.git ${ODOO_EXTRA_ADDONS}/oca/wms \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/account-payment.git ${ODOO_EXTRA_ADDONS}/oca/account-payment \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/account-analytic.git ${ODOO_EXTRA_ADDONS}/oca/account-analytic \
-    && git clone --depth 1 --branch ${ODOO_VERSION}-mig-stock --single-branch https://github.com/indexa-git/operating-unit.git ${ODOO_EXTRA_ADDONS}/oca/operating-unit \
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/operating-unit.git ${ODOO_EXTRA_ADDONS}/oca/operating-unit \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/product-attribute.git ${ODOO_EXTRA_ADDONS}/oca/product-attribute \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/web.git ${ODOO_EXTRA_ADDONS}/oca/web \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-tools.git ${ODOO_EXTRA_ADDONS}/oca/server-tools \
@@ -28,8 +28,8 @@ RUN git clone --depth 1 --branch master --single-branch https://github.com/campt
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/server-auth.git ${ODOO_EXTRA_ADDONS}/oca/server-auth \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/connector.git ${ODOO_EXTRA_ADDONS}/oca/connector \
     && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/OCA/rest-framework.git ${ODOO_EXTRA_ADDONS}/oca/rest-framework \
-    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/l10n-dominicana.git ${ODOO_EXTRA_ADDONS}/indexa/l10n-dominicana \
-    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/external-service-addons.git ${ODOO_EXTRA_ADDONS}/indexa/external-service-addons
+    && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/l10n-dominicana.git ${ODOO_EXTRA_ADDONS}/indexa/l10n-dominicana
+    # && git clone --depth 1 --branch ${ODOO_VERSION} --single-branch https://github.com/indexa-git/external-service-addons.git ${ODOO_EXTRA_ADDONS}/indexa/external-service-addons
 
 COPY . ${ODOO_EXTRA_ADDONS}
 
@@ -42,12 +42,12 @@ RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade ${ODOO_EXTRA_A
 
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
-RUN if [ "${ODOO_VERSION}" = "14.0" ]; then \
-    cd /opt/odoo && \
-    curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/64772.patch | git apply - && \
-    curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \
-    git status; \
-    fi
+# TODO we need to finish up this PR for acceptance into Odoo's core
+# RUN if [ "${ODOO_VERSION}" = "15.0" ]; then \
+#     cd /opt/odoo && \
+#     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \
+#     git status; \
+#     fi
 
 # Odoo Configuration file variables
 ARG ADMIN_PASSWORD

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Chart of Accounts Template -->
+
+    <record id="gov_central_chart_template" model="account.chart.template">
+        <field name="name">Catálogo de Gobierno Central</field>
+        <field name="complete_tax_set" eval="True"/>
+        <field name="cash_account_code_prefix">1101010001</field>
+        <field name="bank_account_code_prefix">​11010200010001</field>
+        <field name="transfer_account_code_prefix">11010200010003</field>
+        <field name="currency_id" ref="base.DOP"/>
+        <field name="country_id" ref="base.do"/>
+        <field name="use_anglo_saxon" eval="True"/>
+    </record>
+
+</odoo>
