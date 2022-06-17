@@ -130,13 +130,13 @@ jobs:
       - uses: imranismail/setup-kustomize@v1
         with:
           kustomize-version: "4.5.4"
-      - run: kustomize build gke-dev-cluster/deployments/odoo/${{ env.ENV }} -o deployment.yaml.tmpl
+      - run: kustomize build gke-dev-cluster/deployments/odoo/${{ env.ENV }} -o deployment.yaml
 
       - name: Render Deployment YAML
-        uses: nowactions/envsubst@v1
+        uses: dominicwatson/github-action-envsubst@v1
         with:
-          input: ./deployment.yaml.tmpl
-          output: ./deployment.yaml
+          files: ./deployment.yaml
+          patterns: $ENV $GKE_LOCATION $EXTRA_MODULES $PROJECT_ID $REPO_NAME $BRANCH_NAME $ODOO_VERSION $DEPLOY_IMAGE $REPO_URL $BRANCH_URL $SHORT_SHA $STAGING_DB $ODOO_VERSION_URL_SLUG $DEPLOY_DOMAIN
         env:
           ENV: ${{ env.ENV }}
           GKE_LOCATION: ${{ secrets.GKE_ZONE }}
