@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_hr_job_form_inherited" model="ir.ui.view">
+        <field name="name">view.hr.job.form.inherited</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Expense products"
+                      groups="hr_expense.group_hr_expense_manager">
+                    <group>
+                        <field name="l10n_do_gov_expense_product_ids" nolabel="1"
+                               context="{
+                                   'default_can_be_expensed': 1,
+                                   'form_view_ref': 'hr_expense.product_product_expense_form_view'
+                                   }">
+                            <tree>
+                                <field name="name"/>
+                                <field name="type"/>
+                                <field name="default_code"/>
+                                <field name="standard_price"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
