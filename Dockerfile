@@ -1,4 +1,4 @@
-ARG ODOO_VERSION=12.0
+ARG ODOO_VERSION=13.0
 FROM iterativodo/dockerdoo:${ODOO_VERSION}
 
 ARG ODOO_VERSION
@@ -36,7 +36,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends build-e
 
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
-RUN if [ "${ODOO_VERSION}" = "12.0" ]; then \
+RUN if [ "${ODOO_VERSION}" = "13.0" ]; then \
     cd /opt/odoo && \
     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/64772.patch | git apply - && \
     curl https://patch-diff.githubusercontent.com/raw/odoo/odoo/pull/69429.patch | git apply - && \
