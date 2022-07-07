@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="hr_expense_view_form_inherited" model="ir.ui.view">
+        <field name="name">hr.expense.view.form.inherited</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="replace">
+                <field name="product_id"
+                       options="{'no_create': True, 'no_open': True}"
+                       context="{'default_can_be_expensed': 1, 'tree_view_ref': 'hr_expense.product_product_expense_tree_view'}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
