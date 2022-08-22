@@ -2,9 +2,21 @@
 <odoo>
     <!-- Chart of Accounts Template -->
 
+    <record id="do_chart_template_common" model="account.chart.template">
+        <field name="name">Catálogo de Cuentas Común Dominicano</field>
+        <field name="code_digits">8</field>
+        <field name="cash_account_code_prefix">110101</field>
+        <field name="bank_account_code_prefix">110102</field>
+        <field name="transfer_account_code_prefix">11010100</field>
+        <field name="currency_id" ref="base.DOP"/>
+        <field name="country_id" ref="base.do"/>
+        <field name="use_anglo_saxon" eval="True"/>
+        <field name="visible" eval="0"/>
+    </record>
+
     <record id="gov_central_chart_template" model="account.chart.template">
         <field name="name">Catálogo de Gobierno Central</field>
-        <field name="complete_tax_set" eval="True"/>
+        <field name="parent_id" ref="do_chart_template_common"/>
         <field name="cash_account_code_prefix">1101010001</field>
         <field name="bank_account_code_prefix">​11010200010001</field>
         <field name="transfer_account_code_prefix">11010200010003</field>
