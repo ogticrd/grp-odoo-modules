@@ -8,7 +8,7 @@
 
 {
     'name': 'Dominican Republic - Govermental Accounting',
-    'version': '15.0.1.0.1',
+    'version': '15.0.1.2.0',
     'category': 'Accounting/Localizations/Account Charts',
     'summary': """
 
@@ -37,10 +37,10 @@ Description pending
         # configuration wizard, views, reports...
         'data/account_chart_template_configure_data.xml',
         # Extra master data
-        'data/masters/account.analytic.group.csv',
-        'data/masters/account.analytic.account.csv',
-        'data/masters/product.category.csv',
-        'data/masters/product.product.csv',
+        # 'data/masters/account.analytic.group.csv',
+        # 'data/masters/account.analytic.account.csv',
+        # 'data/masters/product.category.csv',
+        # 'data/masters/product.product.csv',
 
     ],
     'demo': [
