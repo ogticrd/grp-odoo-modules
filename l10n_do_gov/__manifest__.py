@@ -8,7 +8,7 @@
 
 {
     'name': 'Dominican Republic - Govermental Accounting',
-    'version': '15.0.1.0.1',
+    'version': '15.0.1.0.3',
     'category': 'Accounting/Localizations/Account Charts',
     'summary': """
 
