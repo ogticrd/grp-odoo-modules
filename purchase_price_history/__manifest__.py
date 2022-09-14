@@ -12,6 +12,7 @@
     "data": [
         "security/ir.model.access.csv",
         "security/ir_rule_data.xml",
+        "data/server_action_data.xml",
         "views/product_price_history_views.xml",
     ],
     "installable": True,

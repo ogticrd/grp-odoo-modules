@@ -5,7 +5,8 @@
         <field name="name">product.price.history.tree.view</field>
         <field name="model">product.price.history</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-muted="state == 'cancel'"
+                  decoration-info="state == 'draft'">
                 <field name="date"/>
                 <field name="product_id"/>
                 <field name="default_code"/>
@@ -42,9 +43,15 @@
                 <field name="categ_id"/>
                 <field name="account_id" groups="account.group_account_readonly"/>
                 <filter string="Confirmed" domain="[('state', '=', 'purchase')]"
-                        name="state"/>
+                        name="state_confirmed"/>
+                <filter string="Draft" domain="[('state', '=', 'draft')]"
+                        name="state_draft"/>
+                <filter string="Cancelled" domain="[('state', '=', 'cancel')]"
+                        name="state_cancelled"/>
                 <separator/>
                 <group expand="0" string="Group By...">
+                    <filter string="State" name="state_group" domain="[]"
+                            context="{'group_by': 'state'}"/>
                     <filter string="Product" name="product" domain="[]"
                             context="{'group_by': 'product_id'}"/>
                     <filter string="Category" name="category" domain="[]"
@@ -62,7 +69,9 @@
         <field name="res_model">product.price.history</field>
         <field name="view_mode">tree</field>
         <field name="search_view_id" ref="product_price_history_search_view"/>
-        <field name="context">{'search_default_state':1}</field>
+        <field name="context">
+            {'search_default_state_confirmed':1, 'search_default_product':1}
+        </field>
         <field name="view_id" ref="product_price_history_tree_view"/>
     </record>
 
