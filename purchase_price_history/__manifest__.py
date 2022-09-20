@@ -1,7 +1,9 @@
 {
     "name": "Purchase Price History",
     "summary": """
-        Record products purchase price historical
+        Record products (and services) purchase price historical.
+        
+        This works as product and service price database for future consulting when an organization needs price reference to begin a new purchase process in the future.
     """,
     "author": "José López, OGTIC",
     "website": "https://ogtic.gob.do",
