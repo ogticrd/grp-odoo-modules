@@ -16,7 +16,7 @@
     <field name="parent_id"></field>
     <field name="name">Aplicaciones financieras</field>
   </record>
-  <record id="l10n_do_gov.gov_account_analytic_group_1.1" model="account.analytic.group">
+  <record id="gov_account_analytic_group_1.1" model="account.analytic.group">
     <field name="parent_id">gov_account_analytic_group_1</field>
     <field name="name">Impuestos</field>
   </record>

@@ -37,8 +37,8 @@ Description pending
         # configuration wizard, views, reports...
         'data/account_chart_template_configure_data.xml',
         # Extra master data
-        'data/masters/account_analytic_group.xml',
-        'data/masters/account_analytic_account.xml',
+        # 'data/masters/account_analytic_group.xml',
+        # 'data/masters/account_analytic_account.xml',
         'data/masters/product_category.xml',
         'data/masters/product_product.xml',
 
