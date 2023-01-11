@@ -21,6 +21,7 @@ Description pending
     'website': 'http://ogtic.gob.do',
     'depends': ['account',
                 'purchase',
+                'sale',
                 'base_iban',
                 'product_analytic',
                 ],
