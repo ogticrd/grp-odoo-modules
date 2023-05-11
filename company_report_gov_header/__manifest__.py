@@ -2,7 +2,7 @@
     'name': "Company Report Gov Header",
 
     'summary': """
-        This module add a header with standard government header style
+        This module add a header with standard government header style.
         """,
 
     'author': "Kevin Jiménez, OPTIC",
