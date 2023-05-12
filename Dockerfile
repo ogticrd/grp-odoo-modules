@@ -41,7 +41,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends build-e
 RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade ${ODOO_EXTRA_ADDONS}/camptocamp/anthem
 
 # TODO: remove this after finding the correct fix for: `module 'lib' has no attribute 'X509_V_FLAG_CB_ISSUER_CHECK'`
-RUN pip3 -qq install --prefix=/usr/local --no-cache-dir pyopenssl --upgrade
+# Use fixed requirements from odoo core
+RUN pip3 -qq install --prefix=/usr/local --no-cache-dir pyopenssl==19.0.0 cryptography==2.6.1
 
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
