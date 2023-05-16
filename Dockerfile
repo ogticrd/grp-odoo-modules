@@ -42,7 +42,8 @@ RUN pip3 -qq install --prefix=/usr/local --no-cache-dir --upgrade ${ODOO_EXTRA_A
 
 # TODO: remove this after finding the correct fix for: `module 'lib' has no attribute 'X509_V_FLAG_CB_ISSUER_CHECK'`
 # Use fixed requirements from odoo core
-RUN pip3 -qq install --prefix=/usr/local --no-cache-dir pyopenssl==19.0.0 cryptography==2.6.1
+# Add specific boto3 the one in https://github.com/camptocamp/odoo-cloud-platform/blob/15.0/requirements.txt does not support python 3.10
+RUN pip3 -qq install --prefix=/usr/local --no-cache-dir pyopenssl==19.0.0 cryptography==2.6.1 boto3==1.26.7
 
 RUN sudo chown -R 1000:1000 ${ODOO_EXTRA_ADDONS}
 
