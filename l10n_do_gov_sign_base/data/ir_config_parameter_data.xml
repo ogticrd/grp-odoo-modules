@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="firmas_gob_base_url" model="ir.config_parameter">
+        <field name="key">l10n_do.firmas.gob.url</field>
+        <field name="value">{'url': 'https://test.firmagob.gob.do/inbox/api/v3', 'user': 'api_system', 'password': 'EULNFDOCGSBVINYVRIPAWC51IWBRQMFOFD9PHKFW'}</field>
+    </record>
+
+</odoo>
