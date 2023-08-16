@@ -7,6 +7,6 @@
     "website": "https://optic.gob.do",
     "category": "Uncategorized",
     "version": "15.0.0.1.0",
-    "depends": ["base"],
+    "depends": ["base", "mail"],
     "data": ["data/ir_config_parameter_data.xml", "views/res_users_views.xml"],
 }

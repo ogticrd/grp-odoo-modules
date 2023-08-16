@@ -1,0 +1,11 @@
+{
+    "name": "Firmas Gov Purchase",
+    "summary": """
+        Firmas Gov features for Purchase
+    """,
+    "author": "José López, OGTIC",
+    "website": "https://optic.gob.do",
+    "category": "Uncategorized",
+    "version": "15.0.0.1.0",
+    "depends": ["l10n_do_gov_sign_base", "purchase"],
+}
