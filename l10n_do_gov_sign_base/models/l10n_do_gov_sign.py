@@ -18,9 +18,7 @@ class GovSign(models.AbstractModel):
 
     def _make_request(self, service, data, method="get"):
         params = (
-            self.env["ir.config_parameter"]
-            .sudo()
-            .get_param("https://test.firmagob.gob.do/inbox")
+            self.env["ir.config_parameter"].sudo().get_param("l10n_do.firmas.gob.url")
         )
         try:
             params = safe_eval(params)
@@ -37,7 +35,13 @@ class GovSign(models.AbstractModel):
         if not url.endswith("/"):
             url += "/"
         url += service
-        return getattr(requests, method)(url, auth=basic, json=data)
+        # return getattr(requests, method)(url, auth=basic, json=data)
+        return requests.post(
+            "https://test.firmagob.gob.do/inbox/api/v3/requests",
+            headers={"Content-Type": "application/json"},
+            auth=basic,
+            json=data,
+        )
 
     def create_signing_request(self, documents, addressee, values=None):
         if values is None:
@@ -75,13 +79,15 @@ class GovSign(models.AbstractModel):
                 "signatureLevel": "CERTIFICATE_ONLY",
                 "useDefaultStamp": True,
                 "documentsToSign": [
-                    {"filename": doc.name, "data": doc.datas} for doc in documents
+                    {"filename": doc.display_name, "data": doc.datas.decode("ascii")}
+                    for doc in documents
                 ],
             }
         )
 
+        # response = self._make_request("requests", json.dumps(values), "post")
         response = self._make_request("requests", json.dumps(values), "post")
-        return response.json()
+        # return response.json()
 
     def get_request_data(self, documents, users):
         return
