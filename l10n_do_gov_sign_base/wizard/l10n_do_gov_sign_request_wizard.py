@@ -30,7 +30,7 @@ class SignRequestWizard(models.TransientModel):
         "l10n_do.gov.sign.request.addressee", "request_id", "Addressees"
     )
 
-    @api.onchange('template_id')
+    @api.onchange("template_id")
     def onchange_template_id(self):
         self.composer_id.template_id = self.template_id.id
         self.composer_id._onchange_template_id_wrapper()
@@ -47,6 +47,11 @@ class SignRequestWizard(models.TransientModel):
 
         return result
 
+    def _get_addressee_user(self, user_code):
+        return self.env["res.users"].search(
+            [("l10n_do_gov_sign_username", "=", user_code)], limit=1
+        )
+
     def send_signing_request(self):
         record_id = self.env[self.model].browse(self.res_id)
         values = {
@@ -61,4 +66,22 @@ class SignRequestWizard(models.TransientModel):
             documents=self.attachment_ids,
             addressee=self.addressee_ids,
             values=values,
+        )
+
+        record_id.write(
+            {
+                "l10n_do_gov_signing_request_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "user_id": self._get_addressee_user(usr["userEntities"][0]["userCode"]).id,
+                            "action": usr["userEntities"][0]["action"],
+                            "status": usr["userEntities"][0]["status"],
+                        },
+                    )
+                    for usr in result["addresseeLines"][0]["addresseeGroups"]
+                ],
+                "public_access_id": result["publicAccessId"],
+            }
         )

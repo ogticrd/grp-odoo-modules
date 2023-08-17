@@ -5,9 +5,6 @@ class Purchase(models.Model):
     _inherit = "purchase.order"
 
     public_access_id = fields.Char()
-    signing_request_sent = fields.Boolean(
-        help="Technical field which indicate a signing request was successfully sent"
-    )
     l10n_do_gov_signing_request_ids = fields.One2many(
         "l10n_do_gov.document.signing.request",
         "purchase_id",

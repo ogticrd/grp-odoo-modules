@@ -35,12 +35,11 @@ class GovSign(models.AbstractModel):
         if not url.endswith("/"):
             url += "/"
         url += service
-        # return getattr(requests, method)(url, auth=basic, json=data)
-        return requests.post(
-            "https://test.firmagob.gob.do/inbox/api/v3/requests",
+        return getattr(requests, method)(
+            url,
             headers={"Content-Type": "application/json"},
             auth=basic,
-            json=data,
+            data=json.dumps(data),
         )
 
     def create_signing_request(self, documents, addressee, values=None):
@@ -85,9 +84,8 @@ class GovSign(models.AbstractModel):
             }
         )
 
-        # response = self._make_request("requests", json.dumps(values), "post")
-        response = self._make_request("requests", json.dumps(values), "post")
-        # return response.json()
+        response = self._make_request("requests", values, "post")
+        return response.json()
 
     def get_request_data(self, documents, users):
         return

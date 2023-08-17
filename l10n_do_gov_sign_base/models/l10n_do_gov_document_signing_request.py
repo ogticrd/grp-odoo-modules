@@ -7,9 +7,9 @@ class SignRequest(models.Model):
 
     user_id = fields.Many2one("res.users", "User", required=True)
     action = fields.Selection(
-        [("sign", "Sign"), ("approval", "Approval")], required=True
+        [("SIGN", "Sign"), ("APPROVAL", "Approval")], required=True
     )
-    action_date = fields.Datetime(required=True)
+    action_date = fields.Datetime(required=True, default=lambda self: fields.Datetime.now())
     status = fields.Selection(
         [
             ("new", "New"),
