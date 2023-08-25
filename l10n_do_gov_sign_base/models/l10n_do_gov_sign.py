@@ -87,8 +87,11 @@ class GovSign(models.AbstractModel):
         response = self._make_request("requests", values, "post")
         return response.json()
 
-    def get_request_data(self, documents, users):
-        return
+    def get_request_data(self, public_access_id):
+        url = "requests/%s" % public_access_id
+        response = self._make_request(url, {}, "get")
+        return response.json()
 
-    def finalize_signing_request(self, documents, users):
-        return
+    def finalize_signing_request(self, public_access_id):
+        url = "requests/end/%s" % public_access_id
+        self._make_request(url, {}, "get")

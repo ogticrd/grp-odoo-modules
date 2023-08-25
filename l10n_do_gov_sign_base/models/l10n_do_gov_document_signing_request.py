@@ -12,14 +12,14 @@ class SignRequest(models.Model):
     action_date = fields.Datetime(required=True, default=lambda self: fields.Datetime.now())
     status = fields.Selection(
         [
-            ("new", "New"),
-            ("read", "Read"),
-            ("signed", "Signed"),
-            ("approval", "Approval"),
-            ("reject", "Rejected"),
-            ("no_action", "No action"),
+            ("NEW", "New"),
+            ("READ", "Read"),
+            ("SIGNED", "Signed"),
+            ("APPROVAL", "Approval"),
+            ("REJECT", "Rejected"),
+            ("NO_ACTION", "No action"),
         ],
-        default="new",
+        default="NEW",
         required=True,
     )
     comment = fields.Char()

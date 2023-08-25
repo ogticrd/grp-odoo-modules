@@ -1,16 +1,83 @@
+from datetime import datetime as dt
 from odoo import models, fields, _
+from odoo.exceptions import ValidationError
 
 
 class Purchase(models.Model):
     _inherit = "purchase.order"
 
-    public_access_id = fields.Char()
+    public_access_id = fields.Char(copy=False)
+    signing_request_finished = fields.Boolean()
     l10n_do_gov_signing_request_ids = fields.One2many(
         "l10n_do_gov.document.signing.request",
         "purchase_id",
         "Signing/Approval Requests",
         readonly=True,
     )
+
+    def action_cron_update_signing_request_status(self):
+        pending_orders = self.search(
+            [
+                ("signing_request_finished", "=", False),
+                ("public_access_id", "!=", False),
+            ]
+        )
+        for po in pending_orders:
+            po.update_signing_request_status()
+
+    def finalize_signing_request(self):
+        self.ensure_one()
+        if not self.public_access_id:
+            raise ValidationError(_("Missing Public Access ID for finalize request."))
+        self.env["l10n_do.gov.sign"].finalize_signing_request(self.public_access_id)
+
+        pending_sign_request = self.l10n_do_gov_signing_request_ids.filtered(
+            lambda req: req.status in ("NEW", "READ")
+        )
+        pending_sign_request.write({"status": "NO_ACTION"})
+        self.signing_request_finished = True
+
+    def update_signing_request_status(self):
+        self.ensure_one()
+        if not self.public_access_id:
+            raise ValidationError(_("Missing Public Access ID for status request."))
+        result = self.env["l10n_do.gov.sign"].get_request_data(self.public_access_id)
+        comments_data = result.get("comments", [])
+
+        def get_comment(userCode):
+            comment = False
+            for comment in comments_data:
+                if comment["userCode"] == userCode:
+                    comment = comment["comment"]
+            return comment
+
+        for addressee in result["addresseeLines"][0]["addresseeGroups"]:
+            entity_data = addressee["userEntities"][0]
+            sign_request_id = self.l10n_do_gov_signing_request_ids.filtered(
+                lambda req: req.user_id.l10n_do_gov_sign_username
+                == entity_data["userCode"]
+            )
+            if entity_data["status"] != sign_request_id.status:
+                action_date = (
+                    dt.fromtimestamp(
+                        int(entity_data["actionInfo"]["date"]) / 1000
+                    ).strftime("%Y-%m-%d %H:%M:%S")
+                    if "actionInfo" in entity_data
+                    else fields.Datetime.now()
+                )
+                sign_request_id.write(
+                    {
+                        "status": entity_data["status"],
+                        "action_date": action_date,
+                        "comment": get_comment(entity_data["userCode"]),
+                    }
+                )
+
+        pending_sign_request = self.l10n_do_gov_signing_request_ids.filtered(
+            lambda req: req.status in ("NEW", "READ")
+        )
+        if not pending_sign_request:
+            self.signing_request_finished = True
 
     def action_signing_request_wizard(self):
         self.ensure_one()
