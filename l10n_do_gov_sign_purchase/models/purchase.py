@@ -1,3 +1,4 @@
+import base64
 from datetime import datetime as dt
 from odoo import models, fields, _
 from odoo.exceptions import ValidationError
@@ -6,7 +7,8 @@ from odoo.exceptions import ValidationError
 class Purchase(models.Model):
     _inherit = "purchase.order"
 
-    public_access_id = fields.Char(copy=False)
+    request_public_access_id = fields.Char(copy=False)
+    document_public_access_id = fields.Char(copy=False)
     signing_request_finished = fields.Boolean()
     l10n_do_gov_signing_request_ids = fields.One2many(
         "l10n_do_gov.document.signing.request",
@@ -19,29 +21,48 @@ class Purchase(models.Model):
         pending_orders = self.search(
             [
                 ("signing_request_finished", "=", False),
-                ("public_access_id", "!=", False),
+                ("request_public_access_id", "!=", False),
             ]
         )
         for po in pending_orders:
             po.update_signing_request_status()
 
+    def _message_post_signed_document(self):
+        self.ensure_one()
+        result = self.env["l10n_do.gov.sign"].get_signed_document(
+            self.document_public_access_id
+        )
+
+        attachment = self.env["ir.attachment"].create(
+            {
+                "name": result["filename"],
+                "datas": base64.b64encode(bytes(result["base64"], encoding="utf-8")),
+            }
+        )
+        self.message_post(attachment_ids=[attachment.id])
+
     def finalize_signing_request(self):
         self.ensure_one()
-        if not self.public_access_id:
+        if not self.request_public_access_id:
             raise ValidationError(_("Missing Public Access ID for finalize request."))
-        self.env["l10n_do.gov.sign"].finalize_signing_request(self.public_access_id)
+        self.env["l10n_do.gov.sign"].finalize_signing_request(
+            self.request_public_access_id
+        )
 
         pending_sign_request = self.l10n_do_gov_signing_request_ids.filtered(
             lambda req: req.status in ("NEW", "READ")
         )
         pending_sign_request.write({"status": "NO_ACTION"})
         self.signing_request_finished = True
+        self._message_post_signed_document()
 
     def update_signing_request_status(self):
         self.ensure_one()
-        if not self.public_access_id:
+        if not self.request_public_access_id:
             raise ValidationError(_("Missing Public Access ID for status request."))
-        result = self.env["l10n_do.gov.sign"].get_request_data(self.public_access_id)
+        result = self.env["l10n_do.gov.sign"].get_request_data(
+            self.request_public_access_id
+        )
         comments_data = result.get("comments", [])
 
         def get_comment(userCode):

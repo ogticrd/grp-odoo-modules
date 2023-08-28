@@ -68,6 +68,12 @@ class SignRequestWizard(models.TransientModel):
             values=values,
         )
 
+        document_public_access_id = False
+        if "documentsToSign" in result:
+            for document in result["documentsToSign"]:
+                document_public_access_id = document["publicAccessId"]
+                break
+
         record_id.write(
             {
                 "l10n_do_gov_signing_request_ids": [
@@ -82,6 +88,7 @@ class SignRequestWizard(models.TransientModel):
                     )
                     for usr in result["addresseeLines"][0]["addresseeGroups"]
                 ],
-                "public_access_id": result["publicAccessId"],
+                "request_public_access_id": result["publicAccessId"],
+                "document_public_access_id": document_public_access_id,
             }
         )
