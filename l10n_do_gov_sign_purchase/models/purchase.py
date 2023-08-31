@@ -9,7 +9,7 @@ class Purchase(models.Model):
 
     request_public_access_id = fields.Char(copy=False)
     document_public_access_id = fields.Char(copy=False)
-    signing_request_finished = fields.Boolean()
+    signing_request_finished = fields.Boolean(copy=False)
     l10n_do_gov_signing_request_ids = fields.One2many(
         "l10n_do_gov.document.signing.request",
         "purchase_id",
@@ -36,7 +36,7 @@ class Purchase(models.Model):
         attachment = self.env["ir.attachment"].create(
             {
                 "name": result["filename"],
-                "datas": base64.b64encode(bytes(result["base64"], encoding="utf-8")),
+                "datas": bytes(result["base64"], encoding="utf-8"),
             }
         )
         self.message_post(attachment_ids=[attachment.id])
@@ -54,7 +54,9 @@ class Purchase(models.Model):
         )
         pending_sign_request.write({"status": "NO_ACTION"})
         self.signing_request_finished = True
-        self._message_post_signed_document()
+
+        if self.l10n_do_gov_signing_request_ids.filtered(lambda sq: sq.status == "SIGNED"):
+            self._message_post_signed_document()
 
     def update_signing_request_status(self):
         self.ensure_one()
@@ -78,7 +80,7 @@ class Purchase(models.Model):
                 lambda req: req.user_id.l10n_do_gov_sign_username
                 == entity_data["userCode"]
             )
-            if entity_data["status"] != sign_request_id.status:
+            if sign_request_id and entity_data["status"] != sign_request_id.status:
                 action_date = (
                     dt.fromtimestamp(
                         int(entity_data["actionInfo"]["date"]) / 1000
@@ -98,7 +100,7 @@ class Purchase(models.Model):
             lambda req: req.status in ("NEW", "READ")
         )
         if not pending_sign_request:
-            self.signing_request_finished = True
+            self.finalize_signing_request()
 
     def action_signing_request_wizard(self):
         self.ensure_one()

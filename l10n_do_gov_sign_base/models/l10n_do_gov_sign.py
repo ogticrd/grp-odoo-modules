@@ -35,12 +35,21 @@ class GovSign(models.AbstractModel):
         if not url.endswith("/"):
             url += "/"
         url += service
-        return getattr(requests, method)(
+        result = getattr(requests, method)(
             url,
             headers={"Content-Type": "application/json"},
             auth=basic,
             data=json.dumps(data),
         )
+
+        if result.status_code == 500:
+            error_vals = safe_eval(result.text)
+            raise ValidationError(
+                "El servicio de firmado a retornado el siguiente error:\n\n%s"
+                % error_vals["errorMessage"]
+            )
+
+        return result
 
     def create_signing_request(self, documents, addressee, values=None):
         if values is None:
