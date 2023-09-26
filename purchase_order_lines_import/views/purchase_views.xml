@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="purchase_order_form_import_lines" model="ir.ui.view">
+        <field name="name">purchase.order.form.import.lines</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//header/button[@name="print_quotation"]' position="after">
+                <button name="%(action_import_order_lines)d" string="Import Lines" type="action" states="draft" class="oe_highlight" groups="base.group_user"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
