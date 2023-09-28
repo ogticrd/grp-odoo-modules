@@ -1,0 +1,543 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_do_gov_sign_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-31 02:54+0000\n"
+"PO-Revision-Date: 2023-08-30 23:00-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__action
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__action
+msgid "Action"
+msgstr "Acción"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__action_date
+msgid "Action Date"
+msgstr "Fecha de la acción"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__active_domain
+msgid "Active domain"
+msgstr "Dominio activo"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__add_sign
+msgid "Add Sign"
+msgstr "Añadir firma"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__partner_ids
+msgid "Additional Contacts"
+msgstr "Contactos adicionales"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__user_id
+msgid "Addressee"
+msgstr "Destinatario"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__addressee_ids
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.l10n_do_gov_sign_request_wizard_form
+msgid "Addressees"
+msgstr "Destinatarios"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__action__approval
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__status__approval
+msgid "Approval"
+msgstr "Aprobación"
+
+#. module: l10n_do_gov_sign_base
+#: code:addons/l10n_do_gov_sign_base/wizard/l10n_do_gov_sign_request_wizard.py:0
+#, python-format
+msgid "Approval Request for %s"
+msgstr "Solicitud de aprobación de %s"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_sign_request_addressee__action__approval
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: l10n_do_gov_sign_base
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.l10n_do_gov_sign_request_wizard_form
+msgid "Attach a file"
+msgstr "Adjuntar un archivo"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__attachment_ids
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__author_id
+msgid "Author"
+msgstr "Autor"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__author_id
+msgid "Author of the message. If not set, email_from may hold an email address that did not match any partner."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__can_edit_body
+msgid "Can Edit Body"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.l10n_do_gov_sign_request_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__comment
+msgid "Comment"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__composer_id
+msgid "Composer"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__composition_mode
+msgid "Composition mode"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.l10n_do_gov_sign_request_wizard_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reply_to_force_new
+msgid "Considers answers as new thread"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__body
+msgid "Contents"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: code:addons/l10n_do_gov_sign_base/models/l10n_do_gov_sign.py:0
+#, python-format
+msgid "Could not parse a valid dict params for request."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__create_uid
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__create_uid
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__create_date
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__create_date
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.view_users_form_inherited
+msgid "Credentials"
+msgstr "Credenciales"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__null_value
+msgid "Default Value"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__auto_delete
+msgid "Delete Emails"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__auto_delete_message
+msgid "Delete Message Copy"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__display_name
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__display_name
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__auto_delete_message
+msgid "Do not keep a copy of the email in the document communication history (mass mailing only)"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model,name:l10n_do_gov_sign_base.model_l10n_do_gov_document_signing_request
+msgid "Document Signing Request"
+msgstr "Solicitud de Firmado"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model,name:l10n_do_gov_sign_base.model_l10n_do_gov_sign
+msgid "Dominican Gov Sign"
+msgstr "Firmas GOB"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model,name:l10n_do_gov_sign_base.model_l10n_do_gov_sign_request_addressee
+msgid "Dominican Gov Sign Request Addressee"
+msgstr "Destinatario de Solicitud Firmas GOB"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model,name:l10n_do_gov_sign_base.model_l10n_do_gov_sign_request_wizard
+msgid "Dominican Gov Sign Request Wizard"
+msgstr "Asistente Solicitud Firmas GOB"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__email_from
+msgid ""
+"Email address of the sender. This field is set when no matching partner is found and replaces the author_id "
+"field in the chatter."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__expiration_date
+msgid "Expiration Date"
+msgstr "Fecha expiración"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__model_object_field
+msgid "Field"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__copyvalue
+msgid "Final placeholder expression, to be copy-pasted in the desired template field."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: code:addons/l10n_do_gov_sign_base/models/l10n_do_gov_sign.py:0
+#, python-format
+msgid "Firmas Gob base URL param not found."
+msgstr "El parámetro de la URL base de Firmas GOB no fue encontrado."
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_res_users__l10n_do_gov_sign_password
+msgid "FirmasGob Password"
+msgstr "Contraseña Firmas GOB"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_res_users__l10n_do_gov_sign_username
+msgid "FirmasGob Username"
+msgstr "Usuario Firmas GOB"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__email_from
+msgid "From"
+msgstr "De"
+
+#. module: l10n_do_gov_sign_base
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.view_users_form_inherited
+msgid "Gov Sign"
+msgstr "Firmas GOB"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__id
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__id
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__parent_id
+msgid "Initial thread message."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__is_mail_template_editor
+msgid "Is Editor"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__lang
+msgid "Language"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request____last_update
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee____last_update
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__write_uid
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__write_uid
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__write_date
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__write_date
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__layout
+msgid "Layout"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__is_log
+msgid "Log an Internal Note"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__mail_activity_type_id
+msgid "Mail Activity Type"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reply_to_force_new
+msgid "Manage answers as new incoming emails instead of replies going to the same thread."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__message
+msgid "Message"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__record_name
+msgid "Message Record Name"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__message_type
+msgid ""
+"Message type: email for email message, notification for system message, comment for other messages such as "
+"user replies"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__record_name
+msgid "Name get of the related document."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__status__new
+msgid "New"
+msgstr "Nuevo"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__status__no_action
+msgid "No action"
+msgstr "Sin acción"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__notify
+msgid "Notify followers"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__notify
+msgid "Notify followers of the document (mass post only)"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__lang
+msgid ""
+"Optional translation language (ISO code) to select when sending out an email. If not set, the english version "
+"will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. "
+"{{ object.partner_id.lang }}."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__null_value
+msgid "Optional value to use if the target field is empty"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reply_to_mode
+msgid ""
+"Original Discussion: Answers go in the original document discussion thread. \n"
+" Another Email Address: Answers go to the email address mentioned in the tracking message-id instead of "
+"original document discussion thread. \n"
+" This has an impact on the generated message-id."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__mail_server_id
+msgid "Outgoing mail server"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__parent_id
+msgid "Parent Message"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__copyvalue
+msgid "Placeholder Expression"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__status__read
+msgid "Read"
+msgstr "Leído"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reference
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__status__reject
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__res_id
+msgid "Related Document ID"
+msgstr "ID de documento relacionado"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__model
+msgid "Related Document Model"
+msgstr "Modelo relacionado"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__render_model
+msgid "Rendering Model"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reply_to_mode
+msgid "Replies"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reply_to
+msgid "Reply To"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__reply_to
+msgid "Reply email address. Setting the reply_to bypasses the automatic thread creation."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_addressee__request_id
+msgid "Request"
+msgstr "Solicitud"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__model_object_field
+msgid ""
+"Select target field from the related document model.\n"
+"If it is a relationship field you will be able to select a target field at the destination of the relationship."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__action__sign
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_sign_request_addressee__action__sign
+msgid "Sign"
+msgstr "Firmar"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields.selection,name:l10n_do_gov_sign_base.selection__l10n_do_gov_document_signing_request__status__signed
+msgid "Signed"
+msgstr "Firmado"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__status
+msgid "Status"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__sub_model_object_field
+msgid "Sub-field"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__sub_object
+msgid "Sub-model"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__subject
+msgid "Subject"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__subtype_id
+msgid "Subtype"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__auto_delete
+msgid ""
+"This option permanently removes any track of email after it's been sent, including from the Technical menu in "
+"the Settings, in order to preserve storage space of your Odoo database."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__message_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__use_active_domain
+msgid "Use active domain"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__template_id
+msgid "Use template"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_base.field_l10n_do_gov_document_signing_request__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model,name:l10n_do_gov_sign_base.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__sub_model_object_field
+msgid ""
+"When a relationship field is selected as first field, this field lets you select the target field within the "
+"destination document model (sub-model)."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__sub_object
+msgid ""
+"When a relationship field is selected as first field, this field shows the document model the relationship "
+"goes to."
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model:ir.model.fields,help:l10n_do_gov_sign_base.field_l10n_do_gov_sign_request_wizard__is_log
+msgid "Whether the message is an internal note (comment mode only)"
+msgstr ""
+
+#. module: l10n_do_gov_sign_base
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_base.l10n_do_gov_sign_request_wizard_form
+msgid "Write a message for the addressees..."
+msgstr "Escriba un mensaje para los destinatarios…"

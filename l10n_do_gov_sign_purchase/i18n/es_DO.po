@@ -1,0 +1,104 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_do_gov_sign_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-31 03:01+0000\n"
+"PO-Revision-Date: 2023-08-30 23:05-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_DO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_purchase.field_purchase_order__document_public_access_id
+msgid "Document Public Access"
+msgstr "ID de Acceso Público"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model,name:l10n_do_gov_sign_purchase.model_l10n_do_gov_document_signing_request
+msgid "Document Signing Request"
+msgstr "Solicitud de Firma de documento"
+
+#. module: l10n_do_gov_sign_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_purchase.purchase_order_form_inherited
+msgid "Finalize"
+msgstr "Finalizar"
+
+#. module: l10n_do_gov_sign_purchase
+#: code:addons/l10n_do_gov_sign_purchase/models/purchase.py:0
+#, python-format
+msgid "Missing Public Access ID for finalize request."
+msgstr ""
+
+#. module: l10n_do_gov_sign_purchase
+#: code:addons/l10n_do_gov_sign_purchase/models/purchase.py:0
+#, python-format
+msgid "Missing Public Access ID for status request."
+msgstr ""
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_purchase.field_l10n_do_gov_document_signing_request__purchase_id
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model,name:l10n_do_gov_sign_purchase.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: l10n_do_gov_sign_purchase
+#: code:addons/l10n_do_gov_sign_purchase/models/purchase.py:0
+#, python-format
+msgid "Purchase Order Signing Request"
+msgstr "Solicitud de Firma de Orden de Compra"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.actions.server,name:l10n_do_gov_sign_purchase.purchase_update_signing_request_status_ir_actions_server
+#: model:ir.cron,cron_name:l10n_do_gov_sign_purchase.purchase_update_signing_request_status
+#: model:ir.cron,name:l10n_do_gov_sign_purchase.purchase_update_signing_request_status
+msgid "Purchase: Update signing request status"
+msgstr "Compras: Actualizar estados de solicitud de firmas"
+
+#. module: l10n_do_gov_sign_purchase
+#: code:addons/l10n_do_gov_sign_purchase/models/purchase.py:0
+#, python-format
+msgid "RFQ Signing Request"
+msgstr "Solicitud de firma de RFQ"
+
+#. module: l10n_do_gov_sign_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_purchase.purchase_order_form_inherited
+msgid "Request Approval"
+msgstr "Solicitud de Aprobación"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_purchase.field_purchase_order__request_public_access_id
+msgid "Request Public Access"
+msgstr "ID Acceso Público de Solicitud"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_purchase.field_purchase_order__signing_request_finished
+msgid "Signing Request Finished"
+msgstr "Solicitud de Firma Finalizada"
+
+#. module: l10n_do_gov_sign_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_purchase.purchase_order_form_inherited
+msgid "Signing requests"
+msgstr "Solicitudes de firma"
+
+#. module: l10n_do_gov_sign_purchase
+#: model:ir.model.fields,field_description:l10n_do_gov_sign_purchase.field_purchase_order__l10n_do_gov_signing_request_ids
+msgid "Signing/Approval Requests"
+msgstr "Solicitud de Firmas/Aprobaciones"
+
+#. module: l10n_do_gov_sign_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_do_gov_sign_purchase.purchase_order_form_inherited
+msgid "Update"
+msgstr "Actualizar"
