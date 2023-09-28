@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_normal_form_view_inherited" model="ir.ui.view">
+        <field name="name">product.normal.form.view.inherited</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="replace">
+                <field name="custom_name" placeholder="Product Name"/>
+            </field>
+            <div name="options" position="before">
+                <field name="name" placeholder="Product Template Name"/>
+            </div>
+        </field>
+    </record>
+
+    <record id="product_product_tree_view_inherited" model="ir.ui.view">
+        <field name="name">product.product.tree.view.inherited</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="replace">
+                <field name="display_custom_name" string="Name"/>
+                <field name="name"  optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_search_form_view_inherited" model="ir.ui.view">
+        <field name="name">product.search.form.view.inherited</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_search_form_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="replace">
+                <field name="name" string="Product"
+                       filter_domain="['|', '|', '|', ('default_code', 'ilike', self), ('name', 'ilike', self), ('barcode', 'ilike', self), ('custom_name', 'ilike', self)]"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
