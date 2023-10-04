@@ -19,4 +19,22 @@
         </field>
     </record>
 
+    <record id="view_users_form_simple_modif_inherited" model="ir.ui.view">
+        <field name="name">view.users.form.simple.modif.inherited</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <page name="preferences_page" position="after">
+                <page name="l10n_do_gov_sign" string="Gov Sign">
+                    <group>
+                        <group name="credentials" string="Credentials">
+                            <field name="l10n_do_gov_sign_username"/>
+                            <field name="l10n_do_gov_sign_password" password="True"/>
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
 </odoo>
