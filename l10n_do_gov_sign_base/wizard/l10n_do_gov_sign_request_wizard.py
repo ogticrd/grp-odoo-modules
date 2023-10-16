@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class SignRequestWizardAddressee(models.TransientModel):
@@ -67,6 +68,9 @@ class SignRequestWizard(models.TransientModel):
             addressee=self.addressee_ids,
             values=values,
         )
+
+        if isinstance(result, dict):
+            raise ValidationError(result.get("errorMessage", "Error en envío de request"))
 
         document_public_access_id = False
         if "documentsToSign" in result:

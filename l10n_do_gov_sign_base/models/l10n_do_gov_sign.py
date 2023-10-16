@@ -49,6 +49,9 @@ class GovSign(models.AbstractModel):
                 % error_vals["errorMessage"]
             )
 
+        if result.status_code == 524:
+            raise ValidationError("Error timeout mientras se enviaba la solicitud")
+
         return result
 
     def create_signing_request(self, documents, addressee, values=None):

@@ -6,7 +6,7 @@
     "author": "José López, OGTIC",
     "website": "https://optic.gob.do",
     "category": "Uncategorized",
-    "version": "15.0.0.1.1",
+    "version": "15.0.0.1.2",
     "depends": ["base", "mail"],
     "data": [
         "security/ir.model.access.csv",
