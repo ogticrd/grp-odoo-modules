@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="button_confirm_group" model="res.groups">
+        <field name="name">Can confirm Purchase Order</field>
+    </record>
+
+    <record id="action_create_invoice_group" model="res.groups">
+        <field name="name">Can create Invoice from Purchase Order</field>
+    </record>
+
+</odoo>
