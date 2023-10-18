@@ -69,7 +69,7 @@ class SignRequestWizard(models.TransientModel):
             values=values,
         )
 
-        if isinstance(result, dict):
+        if not isinstance(result, dict):
             raise ValidationError(result.get("errorMessage", "Error en envío de request"))
 
         document_public_access_id = False
