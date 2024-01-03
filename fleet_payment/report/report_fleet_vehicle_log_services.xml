@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="report_vehicle_log_services" model="ir.actions.report">
+            <field name="name">Report Services</field>
+            <field name="model">fleet.vehicle.log.services</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">fleet_payment.report_custom_template</field>
+            <field name="report_file">fleet_payment.report_custom_template</field>
+            <field name="binding_model_id" ref="model_fleet_vehicle_log_services"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_custom_template">
+            <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div class="header" style="text-align: center;">
+                            <img t-attf-src="data:image/*;base64,{{request.env.user.company_id.logo}}" style="max-width: 200px; display: block; margin: auto;" />
+                            <h6 style="margin-top: 10px; font-size: 14px;">Corporate Fleet Fuel Proof List</h6>
+                            <p style="margin-top: 10px; font-size: 12px;">Department of General Services - Transportation Division</p>                           
+                        </div>
+                        <br/>
+                        <div class="row o_header" style="font-size: 12px;">
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-3 fw-bold"><span>Account Number:</span></div>
+                                    <div class="col-9 text-muted"><span t-esc="docs[0].method_payment_id.account_number"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 fw-bold"><span>Payment Form:</span></div>
+                                    <div class="col-9 text-muted"><span t-field="docs[0].method_payment_id.payment_form"></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info" style="font-size: 10px;" >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>License Plate</th>
+                                        <th>Brand</th>
+                                        <th>Model</th>
+                                        <th>Description</th>
+                                        <th>Reference</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody t-foreach="docs" t-as="o">
+                                   <tr t-attf-class="#{('line-break' if o_index % 25 == 0 else '')}">
+                                        <td>
+                                            <span t-field="o.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.license_plate"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.brand"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.model"/>
+                                        </td>                             
+                                        <td>
+                                            <span t-field="o.description"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.ref"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.amount"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    </tr>                                   
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align: right; margin-right: 60px;">
+                            <span style="font-weight: bold; font-size: 12px;">Total:</span>
+                            <span style="font-size: 12px;">
+                                <t t-if="docs and docs[0].currency_id">
+                                    <span t-esc="docs[0].currency_id.symbol"/>
+                                </t>
+                                <span t-esc="sum(doc.amount for doc in docs)"/>
+                            </span>
+                        </div>
+                        <div class="sign-table" style="font-size: 10px;">
+                            <br/><br/><br/>
+                            <table class="sign-table" style="width: 100%; text-align: center;">
+                                <tr>
+                                    <td style="width: 33.33%; padding-right: 60px;">
+                                        <p>Prepared by:</p>
+                                        <br/><br/><br/><br/>
+                                        <p>_________________________________</p>
+                                        <p>Secretary General Services</p>
+                                    </td>
+                                    <td style="width: 33.33%; padding-right: 60px;">
+                                        <p>Reviewed by:</p>
+                                        <br/><br/><br/><br/>
+                                        <p>_________________________________</p>
+                                        <p>Enc. Transportation Division</p>
+                                    </td>
+                                    <td style="width: 33.33%;">
+                                        <p>Approved by:</p>
+                                        <br/><br/><br/><br/>
+                                        <p>_________________________________</p>
+                                        <p>Enc. General Services Department</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+            </t>
+        </template>
+</odoo>

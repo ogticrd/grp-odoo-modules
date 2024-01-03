@@ -1,0 +1,486 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fleet_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-02 16:50+0000\n"
+"PO-Revision-Date: 2024-01-02 16:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fleet_payment
+#: model:ir.actions.report,print_report_name:fleet_payment.report_vehicle_log_services
+msgid "Report Service"
+msgstr "Reporte de Servicio"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "<b>Method Payment</b>"
+msgstr "<b>Metodo de Pago</b>"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "<span style=\"font-weight: bold; font-size: 12px;\">Total:</span>"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__account_number
+msgid "Account Number"
+msgstr "Numero de Cuenta"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields.selection,name:fleet_payment.selection__fleet_method_payment__state__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Approved by:"
+msgstr "Aprobado por:"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__bank
+msgid "Bank"
+msgstr "Banco"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_vehicle_log_services__brand
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_tree_inherit
+msgid "Brand"
+msgstr "Marca"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.fleet_method_payment_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fleet_payment
+#: model:ir.model.fields.selection,name:fleet_payment.selection__fleet_method_payment__state__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Card number:"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Corporate Fleet Fuel Proof List"
+msgstr "Relación de Comprobante de Combustible Flotilla Corporativa"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Cost"
+msgstr "Coste"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__cutoff_date
+msgid "Cutting day"
+msgstr "Fecha de Corte"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Date"
+msgstr "Fecha"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Department of General Services - Transportation Division"
+msgstr "Departamento de Servicios Generales - División de Transportación"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Description"
+msgstr "Actividad"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__due_date
+msgid "Due Date"
+msgstr "Fecha de Vencimiento"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Enc. General Services Department"
+msgstr "Enc. Dpto. Servicios Generales"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Enc. Transportation Division"
+msgstr "Enc. Division de Transportación"
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__cutoff_date
+msgid "Enter the day of the month (1-31)"
+msgstr "Introduzca el día del mes (1-31)"
+
+#. module: fleet_payment
+#: code:addons/fleet_payment/models/fleet_method_payment.py:0
+#, python-format
+msgid "Error. Date format must be MM/YYYY"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields.selection,name:fleet_payment.selection__fleet_method_payment__state__expired
+msgid "Expired"
+msgstr "Expirado"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__id
+msgid "ID"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_needaction
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_has_error
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.fleet_method_payment_form
+msgid "Journal Payment"
+msgstr "Diario de Pago"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_tree_inherit
+msgid "License Plate"
+msgstr "Placa"
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_vehicle_log_services__license_plate
+msgid "License plate number of the vehicle (i = plate number for a car)"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.actions.act_window,name:fleet_payment.fleet_method_payment_action
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_vehicle_log_services__method_payment_id
+#: model:ir.ui.menu,name:fleet_payment.fleet_menu_config_method_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_form_inherit
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_tree_inherit
+msgid "Method Payment"
+msgstr "Metodo de Pago"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_vehicle_log_services__model
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_tree_inherit
+msgid "Model"
+msgstr "Modelo"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields.selection,name:fleet_payment.selection__fleet_method_payment__state__new
+msgid "New"
+msgstr "Nuevo"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Numero de Accion"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_has_error_counter
+msgid "Number of errors"
+msgstr "Numeros de Errores"
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.fleet_method_payment_form
+msgid "Parameters"
+msgstr "Parametros"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__payment_form
+msgid "Payment Form"
+msgstr "Forma de Pago"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_vehicle_log_services__license_plate
+msgid "Plate"
+msgstr "Placa"
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Prepared by:"
+msgstr "Preparado por:"
+
+#. module: fleet_payment
+#: model:ir.model,name:fleet_payment.model_fleet_method_payment
+msgid "Record Method Payment"
+msgstr "Registro Metodo de Pago"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_vehicle_log_services__ref
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_form_inherit
+#: model_terms:ir.ui.view,arch_db:fleet_payment.view_fleet_vehicle_log_services_tree_inherit
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: fleet_payment
+#: model:ir.actions.report,name:fleet_payment.report_vehicle_log_services
+msgid "Report Services"
+msgstr "Reporte de Servicio"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Reviewed by:"
+msgstr "Revisado por:"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "Secretary General Services"
+msgstr "Secretaria Servicios Generales"
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__account_type
+msgid ""
+"Select 'Sale' for customer invoices journals.\n"
+"Select 'Purchase' for vendor bills journals.\n"
+"Select 'Cash' or 'Bank' for journals that are used in customer or vendor payments.\n"
+"Select 'General' for miscellaneous operations journals."
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_vehicle_log_services__method_payment_id
+msgid "Select the payment method"
+msgstr "Selecciona el método de pago"
+
+#. module: fleet_payment
+#: model:ir.model,name:fleet_payment.model_fleet_vehicle_log_services
+msgid "Services for vehicles"
+msgstr "Servicios para los vehículos"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: fleet_payment
+#: code:addons/fleet_payment/models/fleet_method_payment.py:0
+#: model:ir.model.constraint,message:fleet_payment.constraint_fleet_method_payment_number_uniq
+#, python-format
+msgid "This account number already exists!"
+msgstr "¡Este número de cuenta ya existe!"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__account_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.fleet_method_payment_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: fleet_payment
+#: model:ir.model.fields,field_description:fleet_payment.field_fleet_method_payment__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: fleet_payment
+#: model:ir.model.fields,help:fleet_payment.field_fleet_method_payment__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: fleet_payment
+#: model_terms:ir.ui.view,arch_db:fleet_payment.report_custom_template
+msgid "_________________________________"
+msgstr ""
