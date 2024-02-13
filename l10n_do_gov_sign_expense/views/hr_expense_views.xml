@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="purchase_order_form_inherited" model="ir.ui.view">
-        <field name="name">purchase.order.form.inherited</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <record id="view_hr_expense_sheet_form_inherited" model="ir.ui.view">
+        <field name="name">view.hr.expense.sheet.form.inherited</field>
+        <field name="model">hr.expense.sheet</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
         <field name="arch" type="xml">
-            <field name="id" position="after">
+            <button name="approve_expense_sheets" position="after">
+                <button name="action_signing_request_wizard" type="object" string="Request Approval"
+                        attrs="{'invisible': [('request_public_access_id', '!=', False)]}"/>
+            </button>
+            <field name="can_approve" position="after">
                 <field name="request_public_access_id" invisible="1"/>
                 <field name="document_public_access_id" invisible="1"/>
                 <field name="signing_request_finished" invisible="1"/>
             </field>
-            <button name="print_quotation" position="after">
-                <button name="action_signing_request_wizard" type="object" string="Request Approval"
-                        attrs="{'invisible': [('request_public_access_id', '!=', False)]}"/>
-            </button>
-            <page name="products" position="after">
+            <page name="expenses" position="after">
                 <page string="Signing requests" name="signing_request"
                       attrs="{'invisible': [('request_public_access_id', '=', False)]}">
                     <button name="update_signing_request_status" type="object" string="Update"
@@ -29,7 +29,7 @@
                             <field name="action_date"/>
                             <field name="status"/>
                             <field name="comment"/>
-                            <field name="purchase_id" invisible="1"/>
+                            <field name="expense_sheet_id" invisible="1"/>
                         </tree>
                     </field>
                 </page>
