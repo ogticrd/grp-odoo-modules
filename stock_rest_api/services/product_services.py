@@ -81,4 +81,14 @@ class ProductService(Component):
         except Exception as e:
             return {"error": str(e)}, 500
 
+        for key, vals in quantities.items():
+            product_id = product_obj.browse(int(key))
+            vals.update(
+                {
+                    "id": product_id.id,
+                    "default_code": product_id.default_code,
+                    "name": product_id.display_name,
+                }
+            )
+
         return quantities, 200
