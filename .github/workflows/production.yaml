@@ -11,6 +11,7 @@ on:
       - "**.py"
       - "**.xml"
       - "Dockerfile"
+  workflow_dispatch:
 
 env:
   REQUIRED_MODULES: session_redis,logging_json,attachment_s3,cloud_platform_exoscale # list of addional addons to install separated by comma
