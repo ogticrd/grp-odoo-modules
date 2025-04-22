@@ -78,7 +78,7 @@ jobs:
         with:
           registry: us-docker.pkg.dev
           username: _json_key
-          password: ${{ secrets.GKE_SA_KEY }}
+          password: ${{ secrets.GAR_JSON_KEY }}
 
       - name: Login to HUB
         uses: docker/login-action@v1
