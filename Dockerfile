@@ -1,6 +1,6 @@
 ARG IMAGE_LOCATION=iterativodo/dockerdoo
 ARG ODOO_VERSION=15.0
-FROM ${IMAGE_LOCATION}:${ODOO_VERSION}
+FROM us-docker.pkg.dev/odoo-do/odoo/dockerdoo:15
 
 ARG ODOO_VERSION
 ENV ODOO_EXTRA_ADDONS /mnt/extra-addons
