@@ -16,8 +16,8 @@ on:
 env:
   REQUIRED_MODULES: session_redis,logging_json,attachment_s3,cloud_platform_exoscale # list of addional addons to install separated by comma
   GAR_BASE: ${{ vars.GCP_REGISTRY}}
-  HUB_BASE: gobdo/odoo-gob
-  IMAGE_LOCATION: iterativodo/dockerdoo
+  HUB_BASE: ${{ vars.HUB_BASE}}
+  IMAGE_LOCATION: ${{ vars.IMAGE_LOCATION}}
   ENV: "prod"
 
 jobs:
