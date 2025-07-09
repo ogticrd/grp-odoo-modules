@@ -10,8 +10,8 @@ jobs:
   flake8:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
         with:
           python-version: 3.10
       - run: pip install flake8
@@ -43,9 +43,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: curl https://raw.githubusercontent.com/iterativo-git/dockerdoo/12.0/.devcontainer/.vscode/oca_pylint.cfg -o oca_pylint.cfg
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: 3.10
       - run: pip install pylint_odoo
