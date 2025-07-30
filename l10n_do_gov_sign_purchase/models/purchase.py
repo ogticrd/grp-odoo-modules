@@ -14,8 +14,7 @@ class Purchase(models.Model):
     def action_cron_update_signing_request_status_purchase(self):
         pending_orders = self.search(
             [
-                ("signing_request_finished", "=", False),
-                ("request_public_access_id", "!=", False),
+                ("signing_request_finished", "=", False)
             ]
         )
         for po in pending_orders:
